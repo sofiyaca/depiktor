@@ -1,0 +1,17 @@
+
+.dashboard {
+  height: 85vh;
+  margin: 1em 2em;
+  display: flex;
+}
+
+.tabs-container {
+  display: flex;
+  flex: 2;
+}
+
+.options-container {
+  display: flex;
+  flex: 1 1;
+  background-color: lightsalmon;
+}

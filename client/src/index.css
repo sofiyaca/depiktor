@@ -8,5 +8,7 @@ body {
   color: #4B4C4C;
   font-family: Avenir, sans-serif;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
 }
 

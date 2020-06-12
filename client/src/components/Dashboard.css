@@ -1,3 +1,6 @@
+*:focus {
+  outline: none;
+}
 
 .dashboard {
   height: 85vh;
@@ -13,7 +16,6 @@
 .options-container {
   display: flex;
   flex: 1 1;
-  /* background-color: lightsalmon; */
   flex-direction: column;
   padding: 1em 2em;
 }
@@ -21,6 +23,7 @@
 .toggle-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 label {
@@ -39,7 +42,6 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  background-color: violet;
   margin-top: 3em;
   background-color: #f1f1f1;
   border-radius: 5px;
@@ -50,37 +52,64 @@ span {
   display: flex;
   flex: 1;
   border-radius: 5px 5px 0 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .chart-style-container {
   display: flex;
   flex: 2;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.chart-style-select-dropdown {
+  width: 60%;
 }
 
 .chart-timeframe-container {
   display: flex;
   flex: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .horizontal-slider {
-  width: 100%;
+  width: 80%;
   max-width: 500px;
   height: 50px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: grey;
-  border-image: initial;
+  margin-bottom: 1em;
 }
 
-.horizontal-slider .example-track {
+.horizontal-slider .options-track {
   top: 20px;
-  height: 10px;
+  box-sizing: border-box;
+  border: none;
+  height: 4px;
+  background: #aaa;
+  border-radius: 8px;
 }
 
-.horizontal-slider .example-thumb {
-  top: 1px;
-  width: 50px;
-  height: 48px;
-  line-height: 38px;
+.horizontal-slider .options-thumb {
+  box-sizing: border-box;
+  border: none;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #fed68c;
+  bottom: 18px;
+  transition: all 0.1s ease;
+  z-index: 0 !important; /* TODO: can it be done without important?*/
+  text-align: center;
+  cursor: default;
 }
+
+.horizontal-slider .options-thumb:hover {
+  box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
+}
+
+
+

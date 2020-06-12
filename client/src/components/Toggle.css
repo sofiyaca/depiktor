@@ -3,7 +3,7 @@
 
   display: inline-block;
   position: relative;
-  cursor: pointer;
+  cursor: default;
   background-color: transparent;
   border: 0;
   padding: 0;
@@ -49,7 +49,7 @@
   transition: all 0.2s ease;
 }
 
-.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+/* .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
   background-color: #fff;
 }
 
@@ -59,9 +59,9 @@
 
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
   background-color: #fff;
-}
+} */
 
-.react-toggle-track-check {
+/* .react-toggle-track-check {
   position: absolute;
   width: 14px;
   height: 10px;
@@ -75,14 +75,14 @@
   -webkit-transition: opacity 0.25s ease;
   -moz-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-}
+} */
 
 /* .react-toggle--checked .react-toggle-track-check {
   opacity: 1;
   -webkit-transition: opacity 0.25s ease;
   -moz-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-}
+}*/
 
 .react-toggle-track-x {
   position: absolute;
@@ -102,7 +102,7 @@
 
 .react-toggle--checked .react-toggle-track-x {
   opacity: 0;
-} */
+} 
 
 .react-toggle-thumb {
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -114,6 +114,7 @@
   border: 1px solid #f2948f;
   border-radius: 50%;
   background-color: #f2948f;
+  /* box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5); */
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -123,6 +124,11 @@
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
+
+.react-toggle-thumb:hover {
+  box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
+}
+
 
 .react-toggle--checked .react-toggle-thumb {
   left: 27px;

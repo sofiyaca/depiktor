@@ -4,6 +4,10 @@ import Options from './Options';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './React-Tabs.css';
 import {Line, Bar} from 'react-chartjs-2';
+import Toggle from 'react-toggle';
+import './Toggle.css';
+import Select from 'react-select';
+import ReactSlider from 'react-slider'
 
 export default function Dashboard() {
 
@@ -30,11 +34,58 @@ const mockData = {
     ]
 }
 
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'Vue', label: 'Vue' }
+];
+
   return (
     <div className="dashboard">
 
     <div className="options-container">
-    Hello I'm options!
+
+      <div className="toggle-container">
+        <p>List of Toggles with labels</p>
+        <label>
+          <Toggle />
+          <span>React</span>
+       </label>
+       <label>
+          <Toggle />
+          <span>Angular</span>
+       </label>
+       <label>
+          <Toggle />
+          <span>Svelte</span>
+       </label>
+       <label>
+          <Toggle />
+          <span>Vue</span>
+       </label>
+      </div>
+
+      <div className="chart-options-container">
+        <div className="options-header">
+          <p>Options</p>
+        </div>
+
+        <div className="chart-style-container">
+          <Select options={options}></Select>
+        </div>
+          <p>Select Chart Timeframe</p>
+        <div className="chart-timeframe-container">
+          <div style={{ width: "100%" }}>
+            <ReactSlider
+    className="horizontal-slider"
+    thumbClassName="example-thumb"
+    trackClassName="example-track"
+    renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+/>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div className="tabs-container">

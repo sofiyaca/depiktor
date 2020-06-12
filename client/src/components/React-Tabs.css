@@ -31,7 +31,7 @@
 
 .react-tabs__tab--selected {
   background: #fff ;
-  border-color: #aaa;
+  border-color: rgb(211, 201, 201);
   border-radius: 5px 5px 0 0;
   /* box-shadow: 1px 0 4px; */
 

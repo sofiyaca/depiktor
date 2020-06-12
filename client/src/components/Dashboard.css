@@ -13,5 +13,74 @@
 .options-container {
   display: flex;
   flex: 1 1;
-  background-color: lightsalmon;
+  /* background-color: lightsalmon; */
+  flex-direction: column;
+  padding: 1em 2em;
+}
+
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 1em 0 1em 3em
+}
+
+span {
+  margin-left: 2em;
+  color: #4B4C4C;
+  font-family: Avenir, sans-serif;
+  font-size: 1rem;
+}
+
+.chart-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: violet;
+  margin-top: 3em;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.options-header {
+  background-color: #fed68c;
+  display: flex;
+  flex: 1;
+  border-radius: 5px 5px 0 0;
+}
+
+.chart-style-container {
+  display: flex;
+  flex: 2;
+}
+
+.chart-timeframe-container {
+  display: flex;
+  flex: 2;
+}
+
+
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: grey;
+  border-image: initial;
+}
+
+.horizontal-slider .example-track {
+  top: 20px;
+  height: 10px;
+}
+
+.horizontal-slider .example-thumb {
+  top: 1px;
+  width: 50px;
+  height: 48px;
+  line-height: 38px;
 }

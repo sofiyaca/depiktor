@@ -1,6 +1,5 @@
 import React from 'react'
 import './Dashboard.css';
-import Options from './Options';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './React-Tabs.css';
 import {Line, Bar} from 'react-chartjs-2';
@@ -49,19 +48,19 @@ const options = [
       <div className="toggle-container">
         <p>List of Toggles with labels</p>
         <label>
-          <Toggle />
+          <Toggle defaultChecked={true}/>
           <span>React</span>
        </label>
        <label>
-          <Toggle />
+          <Toggle defaultChecked={true}/>
           <span>Angular</span>
        </label>
        <label>
-          <Toggle />
+          <Toggle defaultChecked={true}/>
           <span>Svelte</span>
        </label>
        <label>
-          <Toggle />
+          <Toggle defaultChecked={true}/>
           <span>Vue</span>
        </label>
       </div>
@@ -72,17 +71,20 @@ const options = [
         </div>
 
         <div className="chart-style-container">
-          <Select options={options}></Select>
+          <Select options={options} className="chart-style-select-dropdown" placeholder="Select Chart Style..."></Select>
         </div>
-          <p>Select Chart Timeframe</p>
         <div className="chart-timeframe-container">
-          <div style={{ width: "100%" }}>
-            <ReactSlider
-    className="horizontal-slider"
-    thumbClassName="example-thumb"
-    trackClassName="example-track"
-    renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-/>
+        <p>Timeframe</p>
+          <ReactSlider 
+            className="horizontal-slider"
+            thumbClassName="options-thumb"
+            trackClassName="options-track"
+            min={0}
+            max={7}
+            invert={true}
+            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}>     
+          </ReactSlider>
+          <div>
           </div>
         </div>
       </div>
@@ -103,7 +105,6 @@ const options = [
         </TabPanel>
       </Tabs>
     </div>
-
     </div>
     )
   }

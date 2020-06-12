@@ -1,8 +1,5 @@
 
 .nav {
-  position: fixed;
-  z-index: 10;
-  top: 0;
   height: 9vh;
   width: 100vw;
   background: #f5b64e;

@@ -26,11 +26,11 @@
 
 .react-tabs__tab:hover {
   top: -0.25rem;
-  transition: top 0.25s;
+  transition: top 0.25s; 
 }
 
 .react-tabs__tab--selected {
-  background: #fff ;
+  background: #fed68c ;
   border-color: rgb(211, 201, 201);
   border-radius: 5px 5px 0 0;
   /* box-shadow: 1px 0 4px; */

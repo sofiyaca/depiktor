@@ -10,43 +10,21 @@ import ReactSlider from 'react-slider'
 
 export default function Dashboard() {
 
-
-  const chartComponents = {
-    'Line': <Line></Line>,
-    'Bar': <Bar></Bar>,
-    'Radar': <Radar></Radar>
-  }
-
-  const [selectLabel, setSelectLabel] = useState('');
+  const [selectLabel, setSelectLabel] = useState({value: 'line', label: 'Line'});
+  const [selectTime, setSelectTime] = useState(0);
 
   function handleSelectedLabel(e) {
-    setSelectLabel(e.label);
+    setSelectLabel(e);
   }
 
-  // useEffect (() => {
-  //   mockData.map(techType => 
-  //     <TabPanel key={"tabpanel-"+Object.keys(techType)[0]}>
-
-  //       const chart = chartComponents[selectLabel];
-
-  //       console.log(chart);
-        
-  //       <Line data={Object.values(techType)[0]}></Line>
-  //     </TabPanel>
-  //     )
-  // });
-
-  // console.log(chartComponents[selectLabel]);
-
-
-// const [tabIndex, setTabIndex] = useState({tabIndex: 0});
-
-// console.log(tabIndex);
+  function handleSelectedTime(e) {
+    setSelectTime(e);
+  }
 
 // mock data from getData 
 const mockData = [ 
   
-  {"Web Frameworks": {
+  {"Web Frameworks": { //this object is = data 
   labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
   datasets: [
     {
@@ -66,8 +44,8 @@ const mockData = [
       data: [7, 4, 2, 17, 13, 23, 6]
     }
     ]
-  }
-},  
+  },
+},
 
 {"Languages": {
   labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
@@ -75,18 +53,30 @@ const mockData = [
     {
       label: "JavaScript",
       data: [12, 4, 7, 32, 6, 15, 7],
+      borderColor: ['red', 'yellow', 'orange', 'blue'], //how to add colors
+      backgroundColor: ['red', 'yellow', 'orange', 'blue'],
+      fill: false,
     },
     {
       label: "HTML/CSS",
-      data: [45, 8, 3, 0, 12, 21, 16]
+      data: [45, 8, 3, 0, 12, 21, 16],
+      borderColor: ['yellow'],
+      backgroundColor: ['yellow'],
+      fill: false,
     },
     {
       label: "SQL",
-      data: [17, 4, 3, 7, 8, 45, 3]
+      data: [17, 4, 3, 7, 8, 45, 3],
+      borderColor: ['orange'],
+      backgroundColor: ['orange'],
+      fill: false,
     },
     {
       label: "Python",
-      data: [7, 4, 2, 17, 13, 23, 6]
+      data: [7, 4, 2, 17, 13, 23, 6],
+      borderColor: ['blue'],
+      backgroundColor: ['blue'],
+      fill: false,
     }
     ]
   },
@@ -122,13 +112,20 @@ const chartOptions = [
   { value: 'radar', label: 'Radar' }
 ];
 
+const chartJSOptions = {
+  responsive: true, 
+  title: {
+    display: true, 
+    text: 'test title'
+  },
+}
 
   return (
     <div className="dashboard">
 
     <div className="options-container">
 
-      <div>{selectLabel}</div>
+      <div>{selectLabel.label}</div>
 
       {/* <div className="toggle-container">
 
@@ -156,6 +153,7 @@ const chartOptions = [
         </div>
 
         <div className="chart-style-container">
+          <p>Chart Style</p>
           <Select options={chartOptions} className="chart-style-select-dropdown" 
           placeholder="Select Chart Style..." value={selectLabel} onChange={handleSelectedLabel}>
 
@@ -171,7 +169,9 @@ const chartOptions = [
             min={0}
             max={7}
             invert={true}
-            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}>     
+            value={selectTime}
+            onAfterChange={handleSelectedTime}
+            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}>    
           </ReactSlider>
         </div>
       </div>
@@ -194,10 +194,10 @@ const chartOptions = [
             <TabPanel key={"tabpanel-"+Object.keys(techType)[0]}>
 
               {{
-                'Line': (<Line data={Object.values(techType)[0]}></Line>),
-                'Bar': (<Bar data={Object.values(techType)[0]}></Bar>),
-                'Radar': (<Radar data={Object.values(techType)[0]}></Radar>)
-              }[selectLabel]}
+                'Line': (<Line data={Object.values(techType)[0]} options={chartJSOptions}></Line>),
+                'Bar': (<Bar data={Object.values(techType)[0]} options={chartJSOptions}></Bar>),
+                'Radar': (<Radar data={Object.values(techType)[0]} options={chartJSOptions}></Radar>)
+              }[selectLabel.label]}
 
             </TabPanel>
             )

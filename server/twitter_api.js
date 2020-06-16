@@ -112,7 +112,6 @@ async function bearerToken (auth) {
           totalCount += next_body.meta.result_count;
           requestConfig.qs.next_token = next_body.meta.next_token;
           nextToken = next_body.meta.next_token;
-          console.log('totalCount', totalCount);
         }
       }
     }

@@ -79,7 +79,8 @@ db.Sequelize = Sequelize;
 db.technology = require('./technology.js')(sequelize, Sequelize);
 db.count = require('./count.js')(sequelize, Sequelize);
 
-db.technology.hasMany(db.count);
+db.technology.hasMany(db.count, {
+});
 db.count.belongsTo(db.technology);
 
 module.exports = db;

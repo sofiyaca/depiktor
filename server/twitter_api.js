@@ -37,16 +37,15 @@ async function bearerToken (auth) {
   let token;
   const maxResults = 100;
   
+  //create start_time that's two hours ago
+  var tempStart = new Date();
+  tempStart.setHours(tempStart.getHours()-2);
+  var start_time = new Date(tempStart).toISOString();
+  
   //create end_time that's one hour ago
   var tempEnd = new Date();
   tempEnd.setHours(tempEnd.getHours()-1);
   var end_time = new Date(tempEnd).toISOString();
-  
-  //create start_time that's one day and one hour ago
-  var tempStart = new Date();
-  tempStart.setHours(tempStart.getHours()-2);
-  // tempStart.setDate(tempStart.getDate()-1);
-  var start_time = new Date(tempStart).toISOString();
   
   try {
     // Exchange credentials for a Bearer token
@@ -67,7 +66,7 @@ async function bearerToken (auth) {
       bearer: token,
     },
     headers: {
-      'User-Agent': 'LabsRecentSearchQuickStartJS',
+      'User-Agent': 'Depiktor App',
     },
     json: true,
   };
@@ -75,6 +74,7 @@ async function bearerToken (auth) {
   async function getCount(requestConfig) {
     try {
       let res = await get(requestConfig);
+      //uncomment to see request status and body
       // console.log(res.statusCode);
       // console.log(res.body);
       if (res.statusCode !== 200) {
@@ -91,6 +91,7 @@ async function bearerToken (auth) {
   //find all technologies from the technologies table
   const technologies = await Technology.findAll(); 
   
+  //loop through each & send name as query param to API
   for (let i = 0; i < technologies.length; i++) {
     let query = technologies[i].dataValues.name;
     requestConfig.qs.query = encodeURIComponent(query);

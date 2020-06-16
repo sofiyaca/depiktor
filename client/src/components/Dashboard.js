@@ -9,9 +9,6 @@ import {Line, Bar, Radar} from 'react-chartjs-2';
 import Select from 'react-select';
 import ReactSlider from 'react-slider';
 
-// import Toggle from 'react-toggle';
-// import './Toggle.css';
-
 export default function Dashboard() {
 
   const [loadStatus, setLoadStatus] = useState(true);
@@ -42,45 +39,12 @@ const chartOptions = [
 
 const chartJSOptions = {
   responsive: true
-  // scales: {
-  //   xAxes: [{
-  //       type: 'time',
-  //       time: {
-  //           displayFormats: {
-  //               quarter: 'h:mm a ll'
-  //             }
-  //           }
-  //         }]
-  //       }
     }
 
   return (
     <div className="dashboard">
 
     <div className="options-container">
-
-      {/* <div>{selectLabel.label}</div> */}
-
-      {/* <div className="toggle-container">
-
-        <p>List of Toggles with labels</p>
-
-        {
-          technologies.map(techType => {
-            let labels = Object.values(techType)[0].datasets.map(el => el.label);
-
-            return labels.map(label => 
-              <label>
-                <Toggle defaultChecked={true}/>
-                <span>{label}</span>
-              </label>
-              )
-            }
-          )
-        }
-
-      </div> */}
-      
       <div className="chart-options-container">
         <div className="options-header">
           <p>Options</p>

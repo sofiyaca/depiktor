@@ -42,7 +42,7 @@ const db = {};
 // });
 
 const sequelize = new Sequelize(
-  'depiktor_server_db', //TODO: add a config file for these variables 
+  'depiktor_server_db', //TODO: add a config file env variables 
   'lazarova',
   '', 
   {
@@ -76,6 +76,14 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.technology = require('./technology.js')(sequelize, Sequelize);
+db.count = require('./count.js')(sequelize, Sequelize);
+
+db.technology.hasMany(db.count);
+db.count.belongsTo(db.technology);
+
 module.exports = db;
 
 
+
+ 

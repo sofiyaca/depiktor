@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('./models/technology');
+const db = require('./models');
 
 async function getAll (ctx) {
   try {

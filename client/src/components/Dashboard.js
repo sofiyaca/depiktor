@@ -1,17 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import ApiClient from '../ApiClient';
 import './Dashboard.css';
+import Spinner from './Spinner';
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './React-Tabs.css';
 import {Line, Bar, Radar} from 'react-chartjs-2';
-import Toggle from 'react-toggle';
-import './Toggle.css';
 import Select from 'react-select';
-import ReactSlider from 'react-slider'
+import ReactSlider from 'react-slider';
+
+// import Toggle from 'react-toggle';
+// import './Toggle.css';
 
 export default function Dashboard() {
 
+  const [loadStatus, setLoadStatus] = useState(true);
+  const [technologies, setTechnologies] = useState({});
   const [selectLabel, setSelectLabel] = useState({value: 'line', label: 'Line'});
   const [selectTime, setSelectTime] = useState(0);
+
+  useEffect(() => {
+    ApiClient.getTechnologies()
+      .then(technologies => {setTechnologies(technologies)})
+      .then(()=> setLoadStatus(false))
+    }, []);
 
   function handleSelectedLabel(e) {
     setSelectLabel(e);
@@ -21,90 +33,6 @@ export default function Dashboard() {
     setSelectTime(e);
   }
 
-// mock data from getData 
-const mockData = [ 
-  
-  {"Web Frameworks": { //this object is = data 
-  labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
-  datasets: [
-    {
-      label: "React",
-      data: [12, 4, 7, 32, 6, 15, 7],
-    },
-    {
-      label: "Angular",
-      data: [45, 8, 3, 0, 12, 21, 16]
-    },
-    {
-      label: "Svelte",
-      data: [17, 4, 3, 7, 8, 45, 3]
-    },
-    {
-      label: "Vue",
-      data: [7, 4, 2, 17, 13, 23, 6]
-    }
-    ]
-  },
-},
-
-{"Languages": {
-  labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
-  datasets: [
-    {
-      label: "JavaScript",
-      data: [12, 4, 7, 32, 6, 15, 7],
-      borderColor: ['red', 'yellow', 'orange', 'blue'], //how to add colors
-      backgroundColor: ['red', 'yellow', 'orange', 'blue'],
-      fill: false,
-    },
-    {
-      label: "HTML/CSS",
-      data: [45, 8, 3, 0, 12, 21, 16],
-      borderColor: ['yellow'],
-      backgroundColor: ['yellow'],
-      fill: false,
-    },
-    {
-      label: "SQL",
-      data: [17, 4, 3, 7, 8, 45, 3],
-      borderColor: ['orange'],
-      backgroundColor: ['orange'],
-      fill: false,
-    },
-    {
-      label: "Python",
-      data: [7, 4, 2, 17, 13, 23, 6],
-      borderColor: ['blue'],
-      backgroundColor: ['blue'],
-      fill: false,
-    }
-    ]
-  },
-},
-
-{"Databases": {
-  labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
-  datasets: [
-    {
-      label: "MySQL",
-      data: [12, 4, 7, 32, 6, 15, 7],
-    },
-    {
-      label: "PostgreSQL",
-      data: [45, 8, 3, 0, 12, 21, 16]
-    },
-    {
-      label: "Microsoft SQL Server",
-      data: [17, 4, 3, 7, 8, 45, 3]
-    },
-    {
-      label: "SQLite",
-      data: [7, 4, 2, 17, 13, 23, 6]
-    }
-    ]
-  },
-},
-]
 
 const chartOptions = [
   { value: 'line', label: 'Line' },
@@ -113,26 +41,32 @@ const chartOptions = [
 ];
 
 const chartJSOptions = {
-  responsive: true, 
-  title: {
-    display: true, 
-    text: 'test title'
-  },
-}
+  responsive: true
+  // scales: {
+  //   xAxes: [{
+  //       type: 'time',
+  //       time: {
+  //           displayFormats: {
+  //               quarter: 'h:mm a ll'
+  //             }
+  //           }
+  //         }]
+  //       }
+    }
 
   return (
     <div className="dashboard">
 
     <div className="options-container">
 
-      <div>{selectLabel.label}</div>
+      {/* <div>{selectLabel.label}</div> */}
 
       {/* <div className="toggle-container">
 
         <p>List of Toggles with labels</p>
 
         {
-          mockData.map(techType => {
+          technologies.map(techType => {
             let labels = Object.values(techType)[0].datasets.map(el => el.label);
 
             return labels.map(label => 
@@ -179,35 +113,41 @@ const chartJSOptions = {
     </div>
 
     <div className="tabs-container">
-      <Tabs >
 
-        <TabList>
+      { !loadStatus ?
+        <Tabs>
+    
+          <TabList>
           {
-          mockData.map(techType => 
-            <Tab key={"tab-"+Object.keys(techType)[0]}> {Object.keys(techType)[0]} </Tab>
+          Object.keys(technologies).map(techType => 
+            <Tab key={'tab-'+ techType}> {techType} </Tab>
             )
           }
-        </TabList>
+          </TabList>
 
         {
-          mockData.map(techType => 
-            <TabPanel key={"tabpanel-"+Object.keys(techType)[0]}>
+          Object.values(technologies).map(techType => 
+            <TabPanel key={'panel-' + techType.labels[0]} >
 
               {{
-                'Line': (<Line data={Object.values(techType)[0]} options={chartJSOptions}></Line>),
-                'Bar': (<Bar data={Object.values(techType)[0]} options={chartJSOptions}></Bar>),
-                'Radar': (<Radar data={Object.values(techType)[0]} options={chartJSOptions}></Radar>)
-              }[selectLabel.label]}
+                'Line': (<Line data={techType} options={chartJSOptions}></Line>),
+                'Bar': (<Bar data={techType} options={chartJSOptions}></Bar>),
+                'Radar': (<Radar data={techType} options={chartJSOptions}></Radar>)
+              } [selectLabel.label]}
 
             </TabPanel>
             )
         }
-      </Tabs>
+        </Tabs>
+        :
+        <Spinner/>
+      }
+
     </div>
 
   </div>
     )
   }
-  
-  
+
+
   

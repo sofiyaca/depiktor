@@ -3,8 +3,8 @@
 const BASE_URL = 'http://localhost:3002';
 
 //get request for all chart data
-function getData() {
-  return fetchRequest('/data');
+function getTechnologies() {
+  return fetchRequest('/');
 }
 
 //post request to create a new account 
@@ -45,22 +45,10 @@ function fetchRequest(path, options) {
 }
 
 export default {
-  getData,
+  getTechnologies,
   createAccount,
   login,
   getProfile,
   addTopic,
   logout
 }
-
-
-//mock data from getData 
-// const data = {
-//   labels: ['2020-05-19 10:23:54', '2020-05-20 10:23:54', '2020-05-21 10:23:54', '2020-05-22 10:23:54', '2020-05-23 10:23:54', '2020-05-24 10:23:54', '2020-05-25 10:23:54'],
-//   datasets: [{
-//     react: [12, 4, 7, 32, 6, 15], 
-//     vue: [45, 8, 3, 0, 12, 21], 
-//     angular: [17, 4, 3, 7, 8, 45],
-//     svelte: [7, 4, 2, 17, 13, 23]
-//   }]
-// }

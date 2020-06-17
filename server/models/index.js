@@ -42,7 +42,7 @@ const db = {};
 // });
 
 const sequelize = new Sequelize(
-  'depiktor_server_db', //TODO: add a config file env variables 
+  'depiktor_server_db_v3', //TODO: add a config file env variables 
   'lazarova',
   '', 
   {

@@ -5,9 +5,9 @@
     return (
       <div className="nav">
         <div className="logo">depiktor</div>
-        <div className="btn-container">
+        {/* <div className="btn-container">
           <button className="login-button">Login</button>
-        </div>
+        </div> */}
       </div>
     )
   }

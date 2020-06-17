@@ -3,7 +3,7 @@ const request = require('request');
 const util = require('util');
 
 require('dotenv').config();
-const db = require('./models');
+const db = require('../models');
 const Technology = db.technology;
 const Count = db.count;
 
@@ -31,9 +31,9 @@ async function bearerToken (auth) {
   
   const response = await post(requestConfig);
   return JSON.parse(response.body).access_token;
-}
+};
 
-(async () => {
+async function twitterApiFetch() {
   let token;
   const maxResults = 100;
   
@@ -75,15 +75,15 @@ async function bearerToken (auth) {
     try {
       let res = await get(requestConfig);
       //uncomment to see request status and body
-      // console.log(res.statusCode);
-      // console.log(res.body);
+      console.log(res.statusCode);
+      console.log(res.body);
       if (res.statusCode !== 200) {
         throw new Error(res.json);
         return;
       }
       return res.body;
     } catch (error) {
-      console.error(`Could not get search results. An error occurred: ${error}`);
+      console.error(`Could not get search results. An error occurred: ${error.message}`);
       process.exit(-1)
     }
   }
@@ -127,4 +127,8 @@ async function bearerToken (auth) {
       console.log(`Error inserting ${query} into db`, error); 
     }
   }
-})();
+};
+
+module.exports = {
+  twitterApiFetch
+}

@@ -15,10 +15,11 @@ export default function Dashboard() {
   const [technologies, setTechnologies] = useState({});
   const [selectLabel, setSelectLabel] = useState({value: 'line', label: 'Line'});
   const [selectTime, setSelectTime] = useState(0);
+  const [maxLabel, setMaxLabel] = useState(0);
 
   useEffect(() => {
     ApiClient.getTechnologies()
-      .then(technologies => {setTechnologies(technologies)})
+      .then(technologies => {setTechnologies(technologies); setMaxLabel(technologies.Platforms.labels.length);})
       .then(()=> setLoadStatus(false))
     }, []);
 
@@ -27,6 +28,7 @@ export default function Dashboard() {
   }
 
   function handleSelectedTime(e) {
+    console.log(e);
     setSelectTime(e);
   }
 
@@ -38,8 +40,21 @@ const chartOptions = [
 ];
 
 const chartJSOptions = {
-  responsive: true
+  responsive: true,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'hour',
+          unitStepSize: 1,
+          displayFormats: {
+             'hour': 'hA'
+          }
+        }
+      }]
     }
+  }
+
 
   return (
     <div className="dashboard">
@@ -65,8 +80,8 @@ const chartJSOptions = {
             thumbClassName="options-thumb"
             trackClassName="options-track"
             min={0}
-            max={7}
-            invert={true}
+            max={maxLabel}
+            // invert={true}
             value={selectTime}
             onAfterChange={handleSelectedTime}
             renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}>    

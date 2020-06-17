@@ -25,8 +25,9 @@
 }
 
 .react-tabs__tab:hover {
-  top: -0.25rem;
-  transition: top 0.25s; 
+  /* top: -0.25rem;
+  transition: top 0.25s;  */
+  box-shadow: 0px -2px 5px rgba(66, 97, 255, 0.5);
 }
 
 .react-tabs__tab--selected {

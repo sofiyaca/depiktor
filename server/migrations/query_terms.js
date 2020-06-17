@@ -1,12 +1,12 @@
 
 queryTerms = {
-  'Languages': ['JavaScript', 'HTML/CSS', 'SQL', 'Python'],
-
-  'Other Tools': ['Node.js', 'NET Core', 'Pandas', 'React Native'],
-
-  'Databases': ['MySQL', 'PostgreSQL', 'Microsoft SQL Server', 'SQLite'],
-
   'Platforms': ['Linux', 'Windows', 'Docker', 'AWS'],
+  
+  'Languages': ['JavaScript', 'HTML', 'CSS', 'SQL', 'Python'],
+  
+  'Databases': ['MySQL', 'PostgreSQL', 'Microsoft SQL Server', 'SQLite'],
+  
+  'Other Tools': ['Node.js', 'NET Core', 'Pandas', 'React Native'],
 }
 
 longQueryTerms = {

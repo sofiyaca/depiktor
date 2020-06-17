@@ -1,5 +1,7 @@
 'use strict'
 
+//TODO: Change to env variable 
+
 const BASE_URL = 'http://localhost:3002';
 
 //get request for all chart data
@@ -45,10 +47,5 @@ function fetchRequest(path, options) {
 }
 
 export default {
-  getTechnologies,
-  createAccount,
-  login,
-  getProfile,
-  addTopic,
-  logout
+  getTechnologies
 }

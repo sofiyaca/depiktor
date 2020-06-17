@@ -9,18 +9,6 @@ const Op = Sequelize.Op;
 
 //TODO: add a view to process the data from the DB
 
-//get all the records for the last 7 days 
-//return array of objects 
-// [{category: {
-//  labels: [created_at, * 7], 
-//  datasets: [{label: "tech_name", data: [total *7], borderColor: [random_col *7], fill: false}] 
-// }, ... ]
-
-// loop over every tech create an arr 
-// label: tech name 
-// data: count total
-// border color: gen random color 
-
 const oneWeek = moment().subtract(7, 'days').toDate();
 
 const groupedByCategory = (array) => {
@@ -38,7 +26,6 @@ function createDataset(technologies) {
     return {
       label: technology.dataValues.name,
       data: technology.dataValues.Counts.map(count => count.total),
-      // backgroundColor: technology.dataValues.Counts.map(count => getColor()),
       backgroundColor: randomCol,
       borderColor: randomCol,
       fill: false
@@ -61,8 +48,6 @@ async function getAll (_, res) {
     });
     
     let groupedByCat = groupedByCategory(technologies);
-
-    
     const serializedTech = Object.keys(groupedByCat).reduce((acc, category) => {
       let technologies = groupedByCat[category];
       let countsForLabels = technologies[0].Counts;
@@ -80,7 +65,6 @@ async function getAll (_, res) {
   }
 }
 
-
 async function createTerm (req, res) {
   try {
     
@@ -88,8 +72,6 @@ async function createTerm (req, res) {
     
   }
 }
-
-// getAll();
 
 module.exports = {
   getAll, 

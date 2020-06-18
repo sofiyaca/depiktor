@@ -1,6 +1,6 @@
 const DB_SERVER = 'postgres';
 const DB_USER = 'postgres';
-const DB_PASSWORD = 'Solitary15643';
+const DB_PASSWORD = '';
 
 module.exports = {
   DB_SERVER,

@@ -59,22 +59,13 @@ async function getAll (_, res) {
     }, {});
     
     res.json(serializedTech);
-    res.status(200).send();
+    res.status(200);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function createTerm (req, res) {
-  try {
-    
-  } catch (error) {
-    
-  }
-}
-
 module.exports = {
   getAll, 
-  createTerm
 }
 

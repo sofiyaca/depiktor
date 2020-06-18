@@ -1,5 +1,7 @@
 'use strict';
+const path = require('path');
 
+require('dotenv').config({ path: path.join(__dirname, './../.env') });
 const {queryTerms} = require('./query_terms');
 const db = require('../models');
 const Technology = db.technology;

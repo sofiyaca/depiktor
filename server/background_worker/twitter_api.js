@@ -1,8 +1,9 @@
 const https = require('https');
 const request = require('request');
 const util = require('util');
+const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = require('./../conf'); 
 
-require('dotenv').config();
+
 const db = require('../models');
 const Technology = db.technology;
 const Count = db.count;
@@ -10,8 +11,8 @@ const Count = db.count;
 const get = util.promisify(request.get);
 const post = util.promisify(request.post);
 
-const consumer_key = process.env.TWITTER_CONSUMER_KEY; // Add your API key here
-const consumer_secret = process.env.TWITTER_CONSUMER_SECRET; // Add your API secret key here
+const consumer_key = TWITTER_CONSUMER_KEY; // Add your API key here
+const consumer_secret = TWITTER_CONSUMER_SECRET; // Add your API secret key here
 
 const bearerTokenURL = new URL('https://api.twitter.com/oauth2/token');
 const searchURL = new URL('https://api.twitter.com/labs/2/tweets/search');

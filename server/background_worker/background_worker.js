@@ -1,12 +1,16 @@
 'use strict';
+const path = require('path');
+
+require('dotenv').config({ path: path.join(__dirname, './../.env') });
 
 const schedule = require('node-schedule');
 const { twitterApiFetch } = require('./twitter_api');
-require('dotenv').config();
+
+
 
 //schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();
-rule.minute = 32;
+rule.minute = 54;
 
 schedule.scheduleJob(rule, () => {
   try {

@@ -2,7 +2,6 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Technology = sequelize.define('Technology', {
-    //id, date defined by db automatically
     name: {
       type: DataTypes.STRING,
       allowNull: false,

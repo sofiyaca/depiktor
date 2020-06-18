@@ -5,9 +5,8 @@ const app = new express();
 const morgan = require('morgan');
 const cors = require('cors');
 
-
 const db = require('./models');
-const router = require('./router');
+const router = require('./router/router');
 const PORT = 3002;
 
 

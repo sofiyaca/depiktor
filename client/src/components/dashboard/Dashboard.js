@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import ApiClient from '../ApiClient';
+import ApiClient from '../../services/ApiClient';
 import './Dashboard.css';
-import Spinner from './Spinner';
+import Spinner from '../spinner/Spinner';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './React-Tabs.css';
+import './../react-tabs/React-Tabs.css';
 import {Line, Bar, Radar} from 'react-chartjs-2';
 import Select from 'react-select';
 import ReactSlider from 'react-slider';
+
+import mockData from './../../mock-data/mockData.json';
 
 export default function Dashboard() {
 
@@ -18,10 +20,15 @@ export default function Dashboard() {
   const [maxLabel, setMaxLabel] = useState(0);
 
   useEffect(() => {
-    ApiClient.getTechnologies()
-      .then(technologies => {setTechnologies(technologies); setMaxLabel(technologies.Platforms.labels.length);})
-      .then(()=> setLoadStatus(false))
-    }, []);
+    setTechnologies(mockData);
+    setMaxLabel(mockData.Platforms.labels.length);
+    setLoadStatus(false);
+  }, []);
+
+    // ApiClient.getTechnologies()
+    //   .then(technologies => {setTechnologies(technologies); setMaxLabel(technologies.Platforms.labels.length);})
+    //   .then(()=> setLoadStatus(false))
+    // }, []);
 
   function handleSelectedLabel(e) {
     setSelectLabel(e);
@@ -31,7 +38,6 @@ export default function Dashboard() {
     console.log(e);
     setSelectTime(e);
   }
-
 
 const chartOptions = [
   { value: 'line', label: 'Line' },
@@ -54,7 +60,6 @@ const chartJSOptions = {
       }]
     }
   }
-
 
   return (
     <div className="dashboard">
@@ -107,12 +112,11 @@ const chartJSOptions = {
         {
           Object.values(technologies).map(techType => 
             <TabPanel key={'panel-' + techType.labels[0]} >
-
               {{
                 'Line': (<Line data={techType} options={chartJSOptions}></Line>),
                 'Bar': (<Bar data={techType} options={chartJSOptions}></Bar>),
                 'Radar': (<Radar data={techType} options={chartJSOptions}></Radar>)
-              } [selectLabel.label]}
+              }[selectLabel.label]}
 
             </TabPanel>
             )

@@ -3,11 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('./controllers/controller');
+const controller = require('../controllers/controller');
 
 router.get('/', controller.getAll); 
 
-router.post('/id', controller.createTerm); //add a new search term to the user's view
+// router.post('/id', controller.createTerm); //add a new search term to the user's view
 
 module.exports = router;
 

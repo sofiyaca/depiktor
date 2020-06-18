@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const DB_SERVER = process.env.DB_SERVER;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
@@ -11,4 +12,4 @@ module.exports = {
   DB_PASSWORD,
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
-}
+};

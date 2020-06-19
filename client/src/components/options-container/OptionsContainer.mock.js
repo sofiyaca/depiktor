@@ -23,9 +23,9 @@ const mocks = {
     radar: { value: 'radar', label: 'Radar' },
   },
 
-  handleSelectedLabel() {},
+  handleSelectedLabel: jest.fn(),
 
-  handleSelectedTime() {},
+  handleSelectedTime: jest.fn(),
 };
 
 module.exports = mocks;

@@ -1,4 +1,3 @@
-// __tests__/CheckboxWithLabel-test.js
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import Nav from './Nav';

@@ -1,9 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup, waitForElement } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+afterEach(cleanup);
+
+it('renders depiktor correctly', async () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const AppNode = await waitForElement(() => getByText('depiktor'));
+  expect(AppNode.toBeInTheDocument());
 });

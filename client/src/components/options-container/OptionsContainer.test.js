@@ -5,7 +5,17 @@ import { render } from '@testing-library/react';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<OptionsContainer />, div);
+  ReactDOM.render(
+    <OptionsContainer
+    // handleSelectedLabel=
+    // handleSelectedTime=
+    // chartOptions=
+    // selectLabel=
+    // selectTime=
+    // maxLabel=
+    />,
+    div
+  );
 });
 
 it('renders titles correctly', () => {

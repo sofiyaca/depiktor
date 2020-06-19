@@ -90,4 +90,10 @@ describe('renders the tab panel corresponding to the clicked tab', () => {
     fireEvent.click(getByText('Other Tools'));
     expect(getByTestId('tab-2020-06-16T22:32:34.630Z')).toBeInTheDocument();
   });
+
+  it('The tab options to have properties of has a length of 3', () => {
+    expect(componentMocks.chartOptions).toHaveProperty('line');
+    expect(componentMocks.chartOptions).toHaveProperty('bar');
+    expect(componentMocks.chartOptions).toHaveProperty('radar');
+  });
 });

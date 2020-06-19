@@ -3,7 +3,6 @@ import './Dashboard.css';
 
 // Services
 import ApiClient from '../../services/ApiClient';
-import mockData from './../../mock-data/mockData.json';
 
 // Components
 import OptionsContainer from '../options-container/OptionsContainer';
@@ -21,15 +20,13 @@ export default function Dashboard() {
   const [maxLabel, setMaxLabel] = useState(0);
 
   useEffect(() => {
-    setTechnologies(mockData);
-    setMaxLabel(mockData.Platforms.labels.length);
-    setIsLoading(false);
+    ApiClient.getTechnologies()
+      .then((technologies) => {
+        setTechnologies(technologies);
+        setMaxLabel(technologies.Platforms.labels.length);
+      })
+      .then(() => setIsLoading(false));
   }, []);
-
-  // ApiClient.getTechnologies()
-  //   .then(technologies => {setTechnologies(technologies); setMaxLabel(technologies.Platforms.labels.length);})
-  //   .then(()=> setIsLoading(false))
-  // }, []);
 
   function handleSelectedLabel(e) {
     setSelectLabel(e);

@@ -66,4 +66,10 @@ describe('renders without crashing', () => {
     expect(getByText('Databases')).toBeInTheDocument();
     expect(getByText('Other Tools')).toBeInTheDocument();
   });
+
+  it('The tab options to have properties of has a length of 3', () => {
+    expect(componentMocks.chartOptions).toHaveProperty('line');
+    expect(componentMocks.chartOptions).toHaveProperty('bar');
+    expect(componentMocks.chartOptions).toHaveProperty('radar');
+  });
 });

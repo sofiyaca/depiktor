@@ -7,6 +7,7 @@ import componentMocks from './TabsContainer.mock';
 describe('renders without crashing', () => {
   it('line graph', () => {
     const div = document.createElement('div');
+    window.HTMLCanvasElement.prototype.getContext = () => {};
     ReactDOM.render(
       <TabsContainer
         technologies={mockData}

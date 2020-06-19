@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import ApiClient from '../../services/ApiClient';
 import './Dashboard.css';
+
+// Services
+import ApiClient from '../../services/ApiClient';
+import mockData from './../../mock-data/mockData.json';
+
+// Components
+import OptionsContainer from '../options-container/OptionsContainer';
+import TabsContainer from '../tabs-container/TabsContainer';
 import Spinner from '../spinner/Spinner';
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './../react-tabs/React-Tabs.css';
-import { Line, Bar, Radar } from 'react-chartjs-2';
-
-import mockData from './../../mock-data/mockData.json';
-import OptionsContainer from '../options-container/OptionsContainer';
-
 export default function Dashboard() {
-  const [loadStatus, setLoadStatus] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [technologies, setTechnologies] = useState({});
   const [selectLabel, setSelectLabel] = useState({
     value: 'line',
@@ -23,12 +23,12 @@ export default function Dashboard() {
   useEffect(() => {
     setTechnologies(mockData);
     setMaxLabel(mockData.Platforms.labels.length);
-    setLoadStatus(false);
+    setIsLoading(false);
   }, []);
 
   // ApiClient.getTechnologies()
   //   .then(technologies => {setTechnologies(technologies); setMaxLabel(technologies.Platforms.labels.length);})
-  //   .then(()=> setLoadStatus(false))
+  //   .then(()=> setIsLoading(false))
   // }, []);
 
   function handleSelectedLabel(e) {
@@ -74,32 +74,14 @@ export default function Dashboard() {
         maxLabel={maxLabel}
       />
       <div className="tabs-container">
-        {!loadStatus ? (
-          <Tabs>
-            <TabList>
-              {Object.keys(technologies).map((techType) => (
-                <Tab key={'tab-' + techType}> {techType} </Tab>
-              ))}
-            </TabList>
-
-            {Object.values(technologies).map((techType) => (
-              <TabPanel key={'panel-' + techType.labels[0]}>
-                {
-                  {
-                    Line: (
-                      <Line data={techType} options={chartJSOptions}></Line>
-                    ),
-                    Bar: <Bar data={techType} options={chartJSOptions}></Bar>,
-                    Radar: (
-                      <Radar data={techType} options={chartJSOptions}></Radar>
-                    ),
-                  }[selectLabel.label]
-                }
-              </TabPanel>
-            ))}
-          </Tabs>
-        ) : (
+        {isLoading ? (
           <Spinner />
+        ) : (
+          <TabsContainer
+            technologies={technologies}
+            chartJSOptions={chartJSOptions}
+            selectLabel={selectLabel}
+          />
         )}
       </div>
     </div>

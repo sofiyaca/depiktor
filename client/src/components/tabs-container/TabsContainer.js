@@ -13,7 +13,10 @@ const TabsContainer = ({ technologies, chartJSOptions, selectLabel }) => {
       </TabList>
 
       {Object.values(technologies).map((techType) => (
-        <TabPanel key={'panel-' + techType.labels[0]}>
+        <TabPanel
+          data-testid={'tab-' + techType.labels[0]}
+          key={'panel-' + techType.labels[0]}
+        >
           {
             {
               Line: <Line data={techType} options={chartJSOptions}></Line>,

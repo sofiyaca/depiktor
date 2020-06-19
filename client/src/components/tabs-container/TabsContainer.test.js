@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TabsContainer from './TabsContainer';
 import mockData from '../../mock-data/mockData.json';
 import componentMocks from './TabsContainer.mock';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 describe('renders without crashing', () => {
   it('line graph', () => {
@@ -40,30 +40,54 @@ describe('renders without crashing', () => {
       div
     );
   });
+});
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(
+it('renders tab titles correctly', () => {
+  const { getByText } = render(
+    <TabsContainer
+      technologies={mockData}
+      chartJSOptions={componentMocks.chartJSOptions}
+      selectLabel={componentMocks.chartOptions.line}
+    />
+  );
+
+  expect(getByText('Platforms')).toBeInTheDocument();
+  expect(getByText('Databases')).toBeInTheDocument();
+  expect(getByText('Other Tools')).toBeInTheDocument();
+});
+
+describe('renders the tab panel corresponding to the clicked tab', () => {
+  it('renders Platform panel when you click the Platform tab', () => {
+    const { getByText, getByTestId } = render(
       <TabsContainer
         technologies={mockData}
         chartJSOptions={componentMocks.chartJSOptions}
-        selectLabel={componentMocks.chartOptions.radar}
-      />,
-      div
-    );
-  });
-
-  it('renders tab titles correctly', () => {
-    const { getByText } = render(
-      <TabsContainer
-        technologies={mockData}
-        chartJSOptions={componentMocks.chartJSOptions}
-        selectLabel={componentMocks.chartOptions.radar}
+        selectLabel={componentMocks.chartOptions.line}
       />
     );
-
-    expect(getByText('Platforms')).toBeInTheDocument();
-    expect(getByText('Databases')).toBeInTheDocument();
-    expect(getByText('Other Tools')).toBeInTheDocument();
+    fireEvent.click(getByText('Platforms'));
+    expect(getByTestId('tab-2020-06-16T22:32:06.028Z')).toBeInTheDocument();
+  });
+  it('renders Databases panel when you click the Databases tab', () => {
+    const { getByText, getByTestId } = render(
+      <TabsContainer
+        technologies={mockData}
+        chartJSOptions={componentMocks.chartJSOptions}
+        selectLabel={componentMocks.chartOptions.line}
+      />
+    );
+    fireEvent.click(getByText('Databases'));
+    expect(getByTestId('tab-2020-06-16T22:32:33.400Z')).toBeInTheDocument();
+  });
+  it('renders Other Tools panel when you click the Other Tools tab', () => {
+    const { getByText, getByTestId } = render(
+      <TabsContainer
+        technologies={mockData}
+        chartJSOptions={componentMocks.chartJSOptions}
+        selectLabel={componentMocks.chartOptions.line}
+      />
+    );
+    fireEvent.click(getByText('Other Tools'));
+    expect(getByTestId('tab-2020-06-16T22:32:34.630Z')).toBeInTheDocument();
   });
 });

@@ -1,11 +1,9 @@
-const https = require('https');
 const request = require('request');
 const util = require('util');
 const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = require('./../conf');
 
 const db = require('../models');
 const Technology = db.technology;
-const Count = db.count;
 
 const get = util.promisify(request.get);
 const post = util.promisify(request.post);
@@ -16,7 +14,7 @@ const consumer_secret = TWITTER_CONSUMER_SECRET; // Add your API secret key here
 const bearerTokenURL = new URL('https://api.twitter.com/oauth2/token');
 const searchURL = new URL('https://api.twitter.com/labs/2/tweets/search');
 
-async function bearerToken(auth) {
+async function bearerToken() {
   const requestConfig = {
     url: bearerTokenURL,
     auth: {
@@ -48,7 +46,7 @@ async function twitterApiFetch() {
 
   try {
     // Exchange credentials for a Bearer token
-    token = await bearerToken({ consumer_key, consumer_secret });
+    token = await bearerToken();
   } catch (e) {
     console.error(
       `Could not generate a Bearer token. Please check that your credentials are correct and that the Filtered Stream preview is enabled in your Labs dashboard. (${e})`
@@ -76,11 +74,10 @@ async function twitterApiFetch() {
     try {
       let res = await get(requestConfig);
       //uncomment to see request status and body
-      console.log(res.statusCode);
-      console.log(res.body);
+      // console.log(res.statusCode);
+      // console.log(res.body);
       if (res.statusCode !== 200) {
         throw new Error(res.json);
-        return;
       }
       return res.body;
     } catch (error) {
@@ -118,7 +115,7 @@ async function twitterApiFetch() {
         }
       }
     }
-    console.log(query, totalCount);
+    // console.log(query, totalCount);
 
     try {
       await technologies[i].createCount({

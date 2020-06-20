@@ -98,7 +98,22 @@ describe('serializeTech', () => {
     const result = serializeTech(mocks.arrayTechCategories);
     const categories = groupedByCategory(mocks.arrayTech);
 
-    expect(result).toStrictEqual(result);
-    expect(categories).toStrictEqual(categories);
+    for (let i = 0; i < categories.length; i++) {
+      expect(result[categories[i]].datasets).toStrictEqual(
+        createDataset(mocks.arrayTechCategories[categories[i]])
+      );
+    }
+  });
+
+  it('serializeTech should have date strings for labels', () => {
+    const result = serializeTech(mocks.arrayTechCategories);
+    const categories = groupedByCategory(mocks.arrayTech);
+    const keys = Object.keys(categories);
+
+    for (let i = 0; i < keys.length; i++) {
+      expect(result[keys[i]].labels).toStrictEqual(
+        categories[keys[i]][0].Counts.map((count) => count.dataValues.createdAt)
+      );
+    }
   });
 });

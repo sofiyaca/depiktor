@@ -28,13 +28,10 @@ function serializeTech(groupedByCat) {
     const technologies = groupedByCat[category];
     const countsForLabels = technologies[0].Counts;
 
-    // console.log('Technologies: ', technologies);
-    // console.log('Counts: ', countsForLabels);
     acc[category] = {
-      labels: countsForLabels.map((count) => count.createdAt),
+      labels: countsForLabels.map((count) => count.dataValues.createdAt),
       datasets: createDataset(technologies),
     };
-    // console.log(`Acc ${category}: `, acc[category]);
     return acc;
   }, {});
 }

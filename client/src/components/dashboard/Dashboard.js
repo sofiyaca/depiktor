@@ -29,7 +29,6 @@ export default function Dashboard() {
   }, []);
 
   function handleSelectedLabel(e) {
-    console.log(e);
     setSelectLabel(e);
   }
 

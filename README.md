@@ -1,6 +1,6 @@
 # depiktor
 
-# Installation
+## Installation
 
 1. Clone the repository.
 2. Run `npm install` in both the server and client folders.
@@ -8,7 +8,7 @@
 4. Create a .env file in your client with `SKIP_PREFLIGHT_CHECK=true`.
 5. Run `npm start` in your client folder.
 
-# Loading and configuring the module
+## Loading and configuring the module
 
 For this project, we use a PostgreSQL database along with some Twitter API keys. Set up and run your PostgreSQL database.
 

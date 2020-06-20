@@ -5,11 +5,6 @@ const router = express.Router();
 
 const controller = require('../controllers/controller');
 
-router.get('/', controller.getAll); 
-
-// router.post('/id', controller.createTerm); //add a new search term to the user's view
+router.get('/', controller.getAll);
 
 module.exports = router;
-
-
-

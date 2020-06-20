@@ -37,5 +37,6 @@ function serializeTech(groupedByCat) {
 
 module.exports = {
   groupedByCategory,
+  createDataset,
   serializeTech,
 };

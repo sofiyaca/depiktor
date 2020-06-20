@@ -8,8 +8,29 @@ const mocks = {
         category: 'Platforms',
         createdAt: '2020-06-18T13:37:30.294Z',
         updatedAt: '2020-06-18T13:37:30.294Z',
-        Counts: [{ total: 925 }, { total: 1345 }, { total: 111 }],
+        Counts: [
+          {
+            dataValues: {
+              id: 1,
+              total: 2381,
+              createdAt: '2020-06-18T13:54:07.697Z',
+              updatedAt: '2020-06-18T13:54:07.697Z',
+              TechnologyId: 1,
+            },
+          },
+        ],
       },
+      Counts: [
+        {
+          dataValues: {
+            id: 1,
+            total: 2381,
+            createdAt: '2020-06-18T13:54:07.697Z',
+            updatedAt: '2020-06-18T13:54:07.697Z',
+            TechnologyId: 1,
+          },
+        },
+      ],
     },
     {
       dataValues: {
@@ -19,12 +40,28 @@ const mocks = {
         createdAt: '2020-06-18T13:37:30.509Z',
         updatedAt: '2020-06-18T13:37:30.509Z',
         Counts: [
-          { total: 2401 },
-          { total: 3145 },
-          { total: 1123 },
-          { total: 109 },
+          {
+            dataValues: {
+              id: 2,
+              total: 6778,
+              createdAt: '2020-06-18T13:54:23.610Z',
+              updatedAt: '2020-06-18T13:54:23.610Z',
+              TechnologyId: 2,
+            },
+          },
         ],
       },
+      Counts: [
+        {
+          dataValues: {
+            id: 2,
+            total: 6778,
+            createdAt: '2020-06-18T13:54:23.610Z',
+            updatedAt: '2020-06-18T13:54:23.610Z',
+            TechnologyId: 2,
+          },
+        },
+      ],
     },
     {
       dataValues: {
@@ -33,8 +70,29 @@ const mocks = {
         category: 'Platforms',
         createdAt: '2020-06-18T13:37:30.513Z',
         updatedAt: '2020-06-18T13:37:30.513Z',
-        Counts: [{ total: 145 }],
+        Counts: [
+          {
+            dataValues: {
+              id: 3,
+              total: 145,
+              createdAt: '2020-06-18T13:54:24.480Z',
+              updatedAt: '2020-06-18T13:54:24.480Z',
+              TechnologyId: 3,
+            },
+          },
+        ],
       },
+      Counts: [
+        {
+          dataValues: {
+            id: 3,
+            total: 145,
+            createdAt: '2020-06-18T13:54:24.480Z',
+            updatedAt: '2020-06-18T13:54:24.480Z',
+            TechnologyId: 3,
+          },
+        },
+      ],
     },
     {
       dataValues: {
@@ -44,14 +102,28 @@ const mocks = {
         createdAt: '2020-06-18T13:37:30.514Z',
         updatedAt: '2020-06-18T13:37:30.514Z',
         Counts: [
-          { total: 141 },
-          { total: 132 },
-          { total: 111 },
-          { total: 156 },
-          { total: 151 },
-          { total: 131 },
+          {
+            dataValues: {
+              id: 4,
+              total: 822,
+              createdAt: '2020-06-18T13:54:31.252Z',
+              updatedAt: '2020-06-18T13:54:31.252Z',
+              TechnologyId: 4,
+            },
+          },
         ],
       },
+      Counts: [
+        {
+          dataValues: {
+            id: 4,
+            total: 822,
+            createdAt: '2020-06-18T13:54:31.252Z',
+            updatedAt: '2020-06-18T13:54:31.252Z',
+            TechnologyId: 4,
+          },
+        },
+      ],
     },
     {
       dataValues: {
@@ -60,8 +132,29 @@ const mocks = {
         category: 'Languages',
         createdAt: '2020-06-18T13:37:30.517Z',
         updatedAt: '2020-06-18T13:37:30.517Z',
-        Counts: [{ total: 11512 }, { total: 3455 }],
+        Counts: [
+          {
+            dataValues: {
+              id: 5,
+              total: 14967,
+              createdAt: '2020-06-18T13:54:40.139Z',
+              updatedAt: '2020-06-18T13:54:40.139Z',
+              TechnologyId: 5,
+            },
+          },
+        ],
       },
+      Counts: [
+        {
+          dataValues: {
+            id: 5,
+            total: 14967,
+            createdAt: '2020-06-18T13:54:40.139Z',
+            updatedAt: '2020-06-18T13:54:40.139Z',
+            TechnologyId: 5,
+          },
+        },
+      ],
     },
   ],
   arrayTechCategories: {
@@ -73,8 +166,29 @@ const mocks = {
           category: 'Platforms',
           createdAt: '2020-06-18T13:37:30.294Z',
           updatedAt: '2020-06-18T13:37:30.294Z',
-          Counts: [{ total: 925 }, { total: 1345 }, { total: 111 }],
+          Counts: [
+            {
+              dataValues: {
+                id: 1,
+                total: 2381,
+                createdAt: '2020-06-18T13:54:07.697Z',
+                updatedAt: '2020-06-18T13:54:07.697Z',
+                TechnologyId: 1,
+              },
+            },
+          ],
         },
+        Counts: [
+          {
+            dataValues: {
+              id: 1,
+              total: 2381,
+              createdAt: '2020-06-18T13:54:07.697Z',
+              updatedAt: '2020-06-18T13:54:07.697Z',
+              TechnologyId: 1,
+            },
+          },
+        ],
       },
       {
         dataValues: {
@@ -84,12 +198,28 @@ const mocks = {
           createdAt: '2020-06-18T13:37:30.509Z',
           updatedAt: '2020-06-18T13:37:30.509Z',
           Counts: [
-            { total: 2401 },
-            { total: 3145 },
-            { total: 1123 },
-            { total: 109 },
+            {
+              dataValues: {
+                id: 2,
+                total: 6778,
+                createdAt: '2020-06-18T13:54:23.610Z',
+                updatedAt: '2020-06-18T13:54:23.610Z',
+                TechnologyId: 2,
+              },
+            },
           ],
         },
+        Counts: [
+          {
+            dataValues: {
+              id: 2,
+              total: 6778,
+              createdAt: '2020-06-18T13:54:23.610Z',
+              updatedAt: '2020-06-18T13:54:23.610Z',
+              TechnologyId: 2,
+            },
+          },
+        ],
       },
       {
         dataValues: {
@@ -98,8 +228,29 @@ const mocks = {
           category: 'Platforms',
           createdAt: '2020-06-18T13:37:30.513Z',
           updatedAt: '2020-06-18T13:37:30.513Z',
-          Counts: [{ total: 145 }],
+          Counts: [
+            {
+              dataValues: {
+                id: 3,
+                total: 145,
+                createdAt: '2020-06-18T13:54:24.480Z',
+                updatedAt: '2020-06-18T13:54:24.480Z',
+                TechnologyId: 3,
+              },
+            },
+          ],
         },
+        Counts: [
+          {
+            dataValues: {
+              id: 3,
+              total: 145,
+              createdAt: '2020-06-18T13:54:24.480Z',
+              updatedAt: '2020-06-18T13:54:24.480Z',
+              TechnologyId: 3,
+            },
+          },
+        ],
       },
       {
         dataValues: {
@@ -109,14 +260,28 @@ const mocks = {
           createdAt: '2020-06-18T13:37:30.514Z',
           updatedAt: '2020-06-18T13:37:30.514Z',
           Counts: [
-            { total: 141 },
-            { total: 132 },
-            { total: 111 },
-            { total: 156 },
-            { total: 151 },
-            { total: 131 },
+            {
+              dataValues: {
+                id: 4,
+                total: 822,
+                createdAt: '2020-06-18T13:54:31.252Z',
+                updatedAt: '2020-06-18T13:54:31.252Z',
+                TechnologyId: 4,
+              },
+            },
           ],
         },
+        Counts: [
+          {
+            dataValues: {
+              id: 4,
+              total: 822,
+              createdAt: '2020-06-18T13:54:31.252Z',
+              updatedAt: '2020-06-18T13:54:31.252Z',
+              TechnologyId: 4,
+            },
+          },
+        ],
       },
     ],
     Languages: [
@@ -127,8 +292,29 @@ const mocks = {
           category: 'Languages',
           createdAt: '2020-06-18T13:37:30.517Z',
           updatedAt: '2020-06-18T13:37:30.517Z',
-          Counts: [{ total: 11512 }, { total: 3455 }],
+          Counts: [
+            {
+              dataValues: {
+                id: 5,
+                total: 14967,
+                createdAt: '2020-06-18T13:54:40.139Z',
+                updatedAt: '2020-06-18T13:54:40.139Z',
+                TechnologyId: 5,
+              },
+            },
+          ],
         },
+        Counts: [
+          {
+            dataValues: {
+              id: 5,
+              total: 14967,
+              createdAt: '2020-06-18T13:54:40.139Z',
+              updatedAt: '2020-06-18T13:54:40.139Z',
+              TechnologyId: 5,
+            },
+          },
+        ],
       },
     ],
   },

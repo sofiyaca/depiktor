@@ -19,7 +19,6 @@ async function getAll(_, res) {
         },
       ],
     });
-    console.log('Tech: ', technologies);
 
     const groupedByCat = groupedByCategory(technologies);
     const serializedTech = serializeTech(groupedByCat);

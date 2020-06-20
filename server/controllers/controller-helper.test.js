@@ -38,4 +38,21 @@ describe('createDataset', () => {
       }, true)
     ).toBe(true);
   });
+
+  it('technology counts should be added correctly', () => {
+    const result = createDataset(mocks.arrayTech);
+    const counts = mocks.arrayTech.map((technology) => {
+      return {
+        name: technology.dataValues.name,
+        total: technology.dataValues.Counts.reduce((count, data) => {
+          return count + data.total;
+        }, 0),
+      };
+    });
+
+    for (let i = 0; i < result.length; i++) {
+      expect(result[i].name === counts[i].name).toBe(true);
+      expect(result[i].data === counts[i].total).toBe(true);
+    }
+  });
 });

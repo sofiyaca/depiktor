@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TabsContainer from './TabsContainer';
-import mockData from '../../mock-data/mockData.json';
+import mockData from '../../__mocks__/mockData.json';
 import componentMocks from './TabsContainer.mock';
 import { render, fireEvent } from '@testing-library/react';
+
+jest.mock('react-chartjs-2', () => ({
+  Line: () => null,
+  Bar: () => null,
+  Radar: () => null,
+}));
 
 describe('renders without crashing', () => {
   it('line graph', () => {

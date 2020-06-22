@@ -1,6 +1,9 @@
 const request = require('request');
 const util = require('util');
-const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = require('./../conf');
+const {
+  TWITTER_CONSUMER_KEY,
+  TWITTER_CONSUMER_SECRET,
+} = require('./../config');
 
 const db = require('../models');
 const Technology = db.technology;

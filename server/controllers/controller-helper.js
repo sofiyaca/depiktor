@@ -25,10 +25,11 @@ function createDataset(technologies) {
 // TODO: Add comment explaining functionality
 function serializeTech(groupedByCat) {
   return Object.keys(groupedByCat).reduce((acc, category) => {
-    let technologies = groupedByCat[category];
-    let countsForLabels = technologies[0].Counts;
+    const technologies = groupedByCat[category];
+    const countsForLabels = technologies[0].Counts;
+
     acc[category] = {
-      labels: countsForLabels.map((count) => count.createdAt),
+      labels: countsForLabels.map((count) => count.dataValues.createdAt),
       datasets: createDataset(technologies),
     };
     return acc;
@@ -37,5 +38,6 @@ function serializeTech(groupedByCat) {
 
 module.exports = {
   groupedByCategory,
+  createDataset,
   serializeTech,
 };

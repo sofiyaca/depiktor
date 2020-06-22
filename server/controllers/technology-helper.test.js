@@ -1,9 +1,9 @@
-const mocks = require('./controller-helper.mock');
+const mocks = require('./technology-helper.mock');
 const {
   groupedByCategory,
   createDataset,
   serializeTech,
-} = require('./controller-helper');
+} = require('./technology-helper');
 
 describe('groupedByCategory', () => {
   it('empty array should return empty object', () => {

@@ -1,4 +1,4 @@
-import mockData from './../mock-data/mockData.json';
+import mockData from '../__mocks__/mockData.json';
 // const BASE_URL = 'http://localhost:3002';
 
 //get request for all chart data

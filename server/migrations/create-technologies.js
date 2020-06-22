@@ -1,0 +1,19 @@
+'use strict';
+
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, './../.env') });
+const TechModel = require('../models/technology');
+const queryTerms = require('./query-terms');
+
+const seedDB = async (technologies) => {
+  for (let i = 0; i < technologies.length; i++) {
+    await TechModel.create({
+      name: technologies[i],
+      counts: [],
+      timestamps: [],
+    });
+  }
+  console.log(`🌱 Successfully seeded database!`);
+};
+
+seedDB(queryTerms);

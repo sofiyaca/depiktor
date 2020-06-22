@@ -1,7 +1,2 @@
 node_modules
 .env
-
-# Ignoring these folders from the backend server.
-
-background_worker/
-migrations/

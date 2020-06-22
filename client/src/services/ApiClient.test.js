@@ -1,4 +1,4 @@
-import mockData from '../mock-data/mockData.json';
+import mockData from '../__mocks__/mockData.json';
 
 describe('ApiClient returns data correctly', () => {
   test('the mock data has the property Platforms', () => {

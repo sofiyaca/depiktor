@@ -8,7 +8,7 @@ const { twitterApiFetch } = require('./twitter_api');
 
 //schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();
-rule.minute = 54;
+rule.minute = 1;
 
 schedule.scheduleJob(rule, () => {
   try {

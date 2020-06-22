@@ -1,18 +1,16 @@
 const request = require('request');
 const util = require('util');
+const moment = require('moment');
+
 const {
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
 } = require('./../config');
 
-const db = require('../models');
-const Technology = db.technology;
+const TechModel = require('../models/technology');
 
 const get = util.promisify(request.get);
 const post = util.promisify(request.post);
-
-const consumer_key = TWITTER_CONSUMER_KEY; // Add your API key here
-const consumer_secret = TWITTER_CONSUMER_SECRET; // Add your API secret key here
 
 const bearerTokenURL = new URL('https://api.twitter.com/oauth2/token');
 const searchURL = new URL('https://api.twitter.com/labs/2/tweets/search');
@@ -21,8 +19,8 @@ async function bearerToken() {
   const requestConfig = {
     url: bearerTokenURL,
     auth: {
-      user: consumer_key,
-      pass: consumer_secret,
+      user: TWITTER_CONSUMER_KEY,
+      pass: TWITTER_CONSUMER_SECRET,
     },
     form: {
       grant_type: 'client_credentials',
@@ -36,16 +34,8 @@ async function bearerToken() {
 async function twitterApiFetch() {
   let token;
   const maxResults = 100;
-
-  //create start_time that's two hours ago
-  var tempStart = new Date();
-  tempStart.setHours(tempStart.getHours() - 2);
-  var start_time = new Date(tempStart).toISOString();
-
-  //create end_time that's one hour ago
-  var tempEnd = new Date();
-  tempEnd.setHours(tempEnd.getHours() - 1);
-  var end_time = new Date(tempEnd).toISOString();
+  const start_time = moment().subtract(2, 'hours').toISOString();
+  const end_time = moment().subtract(1, 'hours').toISOString();
 
   try {
     // Exchange credentials for a Bearer token
@@ -73,7 +63,7 @@ async function twitterApiFetch() {
     json: true,
   };
 
-  async function getCount(requestConfig) {
+  async function getTweets(requestConfig) {
     try {
       let res = await get(requestConfig);
       if (res.statusCode !== 200) {
@@ -88,41 +78,41 @@ async function twitterApiFetch() {
     }
   }
 
-  //find all technologies from the technologies table
-  const technologies = await Technology.findAll();
+  let technologies;
+  try {
+    technologies = await TechModel.find({}, 'name');
+  } catch (error) {
+    console.error(`Error getting the names of technologies: ${error}`);
+  }
 
   //loop through each & send name as query param to API
   for (let i = 0; i < technologies.length; i++) {
-    let query = technologies[i].dataValues.name;
-    requestConfig.qs.query = encodeURIComponent(query);
+    let queryName = technologies[i].name;
+    requestConfig.qs.query = encodeURIComponent(queryName);
 
-    let totalCount = 0;
-    let body = await getCount(requestConfig);
-    let resultCount = body.meta.result_count;
+    let tweets = await getTweets(requestConfig);
+    let totalTweetCount = tweets.meta.result_count;
 
-    if (resultCount) {
-      totalCount += resultCount;
-      let nextToken = body.meta.next_token;
-
-      if (nextToken) {
-        requestConfig.qs.next_token = nextToken;
-
-        while (nextToken) {
-          let next_body = await getCount(requestConfig);
-          totalCount += next_body.meta.result_count;
-          requestConfig.qs.next_token = next_body.meta.next_token;
-          nextToken = next_body.meta.next_token;
-        }
-      }
+    // Getting total number of tweets
+    while (tweets.meta.next_token) {
+      tweets = await getTweets(requestConfig);
+      totalTweetCount += tweets.meta.result_count;
+      requestConfig.qs.next_token = tweets.meta.next_token;
     }
 
     try {
-      await technologies[i].createCount({
-        total: totalCount,
-      });
-      console.log(`Success inserting into db`);
+      await TechModel.updateOne(
+        { name: queryName },
+        {
+          $push: {
+            counts: totalTweetCount,
+            timestamps: moment().toISOString(),
+          },
+        }
+      );
+      console.log(`Success inserting into db!`);
     } catch (error) {
-      console.log(`Error inserting ${query} into db`, error);
+      console.log(`Error inserting ${queryName} into db: `, error);
     }
   }
 }

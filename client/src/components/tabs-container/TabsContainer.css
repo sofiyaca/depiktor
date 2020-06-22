@@ -31,11 +31,10 @@
 }
 
 .react-tabs__tab--selected {
-  background: #fed68c ;
+  background: #fed68c;
   border-color: rgb(211, 201, 201);
   border-radius: 5px 5px 0 0;
-  /* box-shadow: 1px 0 4px; */
-
+   /* box-shadow: 1px 0 4px; */
 }
 
 .react-tabs__tab--disabled {
@@ -51,7 +50,7 @@
 }
 
 .react-tabs__tab:focus:after {
-  content: "";
+  content: '';
   position: absolute;
   height: 5px;
   left: -4px;

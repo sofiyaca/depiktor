@@ -12,24 +12,21 @@ const OptionsContainer = ({
 }) => {
   return (
     <div className="options-container">
-      <div className="chart-options-container">
-        <div className="options-header">
-          {/* <p>Options</p> */}
-          <div className="nav-logo">depiktor</div>
-        </div>
+      <div className="options-container__nav">
+        <div className="nav-text">depiktor</div>
+      </div>
 
-        <div className="chart-style-container">
-          <p className="chart-style-container-header">Chart - Options</p>
-          <Select
-            options={chartOptions}
-            className="chart-style-select-dropdown"
-            // placeholder="Select Chart Style..."
-            value={selectLabel}
-            onChange={handleSelectedLabel}
-          ></Select>
-        </div>
+      <div className="options-container__body">
+        <p>Chart - Options</p>
+        <Select
+          options={chartOptions}
+          className="options-dropdown"
+          value={selectLabel}
+          onChange={handleSelectedLabel}
+        ></Select>
+      </div>
 
-        {/* <div className="chart-timeframe-container">
+      {/* <div className="chart-timeframe-container">
           <p>Timeframe</p>
           <ReactSlider
             className="horizontal-slider"
@@ -45,7 +42,6 @@ const OptionsContainer = ({
             )}
           ></ReactSlider>
         </div> */}
-      </div>
     </div>
   );
 };

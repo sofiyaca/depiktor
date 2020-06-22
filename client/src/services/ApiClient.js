@@ -1,7 +1,14 @@
 // import mockData from '../__mocks__/mockData.json';
 import mongoData from '../__mocks__/mongoMocks.json';
 
+// const BASE_URL = 'http://localhost:3002';
+
 const colorOptions = [
+  '#FF6384',
+  '#FFCE56',
+  '#36A2EB',
+  '#EE82EE',
+  '#cd853f', //peru
   '#FA8072', //salmon
   '#00FF00', //line
   '#008080', //teal
@@ -30,19 +37,11 @@ const initialData = {
     datasets: [],
   },
 };
-// const BASE_URL = 'http://localhost:3002';
 
 //get request for all chart data
 function getTechnologies() {
   // return fetchRequest('/');
-
-  console.log(colorOptions);
-  console.log(mongoData);
-
   initialData['Technologies'].labels = [...mongoData[0].timestamps];
-
-  console.log(initialData);
-
   for (let i = 0; i < mongoData.length; i++) {
     initialData['Technologies'].datasets.push({
       label: mongoData[i].name,
@@ -52,7 +51,6 @@ function getTechnologies() {
       fill: false,
     });
   }
-
   return Promise.resolve(initialData);
 }
 

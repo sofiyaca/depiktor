@@ -36,14 +36,16 @@ const chartJSOptions = {
   },
 };
 
+const defaultChart = {
+  value: 'line',
+  label: 'Line',
+};
+
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [technologies, setTechnologies] = useState({});
   const [newData, setNewData] = useState({});
-  const [selectLabel, setSelectLabel] = useState({
-    value: 'line',
-    label: 'Line',
-  });
+  const [selectLabel, setSelectLabel] = useState(defaultChart);
   const [maxLabel, setMaxLabel] = useState(0);
   const [techProp, setTechProp] = useState('Technologies');
 
@@ -101,25 +103,21 @@ const Dashboard = () => {
         chartOptions={chartOptions}
         selectLabel={selectLabel}
         maxLabel={maxLabel}
-        // selectTime={selectTime}
-        // handleSelectedTime={handleSelectedTime}
       />
-      <br />
-      <div className="dashboard">
-        <div className="tabs-container">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <TabsContainer
-              technologies={technologies}
-              chartJSOptions={chartJSOptions}
-              technologyPieData={newData}
-              selectLabel={selectLabel}
-              handleTabs={handleTabs}
-              techProp={techProp}
-            />
-          )}
-        </div>
+
+      <div className="chart-container">
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <TabsContainer
+            technologies={technologies}
+            chartJSOptions={chartJSOptions}
+            technologyPieData={newData}
+            selectLabel={selectLabel}
+            handleTabs={handleTabs}
+            techProp={techProp}
+          />
+        )}
       </div>
     </>
   );

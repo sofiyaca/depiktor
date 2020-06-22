@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Dashboard.css';
+import './Dashboard.scss';
 
 // Services
 import ApiClient from '../../services/ApiClient';
@@ -45,13 +45,13 @@ const Dashboard = () => {
     label: 'Line',
   });
   const [maxLabel, setMaxLabel] = useState(0);
-  const [techProp, setTechProp] = useState('Platforms');
+  const [techProp, setTechProp] = useState('Technologies');
 
   useEffect(() => {
     ApiClient.getTechnologies()
       .then((technologies) => {
         setTechnologies(technologies);
-        setMaxLabel(technologies.Platforms.labels.length);
+        setMaxLabel(technologies.Technologies.labels.length);
         // Start of Data Manipulation
         let techKeys = Object.keys(technologies);
         let newDataObj = {};

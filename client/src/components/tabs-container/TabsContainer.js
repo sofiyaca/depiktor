@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Line, Bar, Radar, Pie, Doughnut, Polar } from 'react-chartjs-2';
-import './TabsContainer.css';
+import './TabsContainer.scss';
 
 const TabsContainer = ({
   technologies,

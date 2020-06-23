@@ -10,7 +10,7 @@ const queryTerms = require('../seeders/query-terms');
 
 //schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();
-rule.minute = 22;
+rule.minute = 38;
 
 schedule.scheduleJob(rule, () => {
   try {

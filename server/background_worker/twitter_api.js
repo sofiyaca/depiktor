@@ -67,7 +67,7 @@ async function twitterApiFetch(technologies) {
     try {
       let res = await get(requestConfig);
       if (res.statusCode !== 200) {
-        throw new Error(res.headers);
+        throw new Error(res.statusCode);
       }
       return res.body;
     } catch (error) {
@@ -80,7 +80,7 @@ async function twitterApiFetch(technologies) {
 
   //loop through each & send name as query param to API
   for (let i = 0; i < technologies.length; i++) {
-    let queryName = technologies[i].name;
+    let queryName = technologies[i];
     requestConfig.qs.query = encodeURIComponent(queryName);
 
     let tweets = await getTweets(requestConfig);

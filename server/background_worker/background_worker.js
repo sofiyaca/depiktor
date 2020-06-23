@@ -6,7 +6,7 @@ require('dotenv').config({ path: path.join(__dirname, './../.env') }); // eslint
 const schedule = require('node-schedule');
 const { twitterApiFetch } = require('./twitter_api');
 
-const queryTerms = require('./../migrations/query-terms');
+const queryTerms = require('../seeders/query-terms');
 
 //schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();

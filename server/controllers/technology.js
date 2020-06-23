@@ -12,16 +12,6 @@ const getAll = async (_, res) => {
   }
 };
 
-const postOne = async (req, res) => {
-  try {
-    res.body = await TechModel.create(req.body);
-    res.status(201).json(res.body);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
 const deleteAll = async (req, res) => {
   try {
     res.body = await TechModel.deleteMany({});
@@ -34,6 +24,5 @@ const deleteAll = async (req, res) => {
 
 module.exports = {
   getAll,
-  postOne,
   deleteAll,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 // import ReactSlider from 'react-slider';
+import ReactTooltip from 'react-tooltip';
 
 const OptionsContainer = ({
   handleSelectedLabel,
@@ -16,8 +17,13 @@ const OptionsContainer = ({
         <div className="nav-text">depiktor</div>
       </div>
 
-      <div className="options-container__body">
+      <div
+        className="options-container__body"
+        data-tip="Click on chart options to change chart type"
+      >
+        <ReactTooltip />
         <p>Chart - Options</p>
+
         <Select
           options={chartOptions}
           className="options-dropdown"

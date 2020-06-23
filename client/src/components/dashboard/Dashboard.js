@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Dashboard.scss';
+import ReactTooltip from 'react-tooltip';
 
 // Services
 import ApiClient from '../../services/ApiClient';
@@ -154,20 +155,26 @@ const Dashboard = () => {
         maxLabel={maxLabel}
       />
 
-      <div className="chart-container">
+      <div
+        className="chart-container"
+        data-tip="Click on topics to add or remove them from the charts"
+      >
+        <ReactTooltip />
         <ToggleList techList={techList} handleToggle={handleToggle} />
         {isLoading ? (
           <Spinner />
         ) : (
-          <TabsContainer
-            technologies={technologies}
-            chartJSOptions={chartJSOptions}
-            pieData={pieData}
-            scatterData={scatterData}
-            selectLabel={selectLabel}
-            handleTabs={handleTabs}
-            techProp={techProp}
-          />
+          <>
+            <TabsContainer
+              technologies={technologies}
+              chartJSOptions={chartJSOptions}
+              pieData={pieData}
+              scatterData={scatterData}
+              selectLabel={selectLabel}
+              handleTabs={handleTabs}
+              techProp={techProp}
+            />
+          </>
         )}
       </div>
     </>

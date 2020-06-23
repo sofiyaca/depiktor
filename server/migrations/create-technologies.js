@@ -16,6 +16,7 @@ const seedDB = async (technologies) => {
     }
   }
   console.log(`🌱 Successfully seeded database!`);
+  process.exit(-1);
 };
 
 seedDB(queryTerms);

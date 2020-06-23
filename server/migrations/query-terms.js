@@ -1,11 +1,4 @@
 const queryTerms = [
-  'JavaScript',
-  'CSS',
-  'Python',
-  'Java',
-  'C#',
-  'TypeScript',
-  'PHP',
   'Nodejs',
   '.NET',
   'TensorFlow',
@@ -14,6 +7,14 @@ const queryTerms = [
   'MongoDB',
   'Redis',
   'Deno',
+  'JavaScript',
+  'CSS',
+  'Python',
+  'Java',
+  'C#',
+  'TypeScript',
+  // 'PHP',
+  // 'HTML',
 ];
 
 module.exports = queryTerms;

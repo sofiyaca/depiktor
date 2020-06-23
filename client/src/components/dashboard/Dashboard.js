@@ -9,6 +9,8 @@ import OptionsContainer from '../options-container/OptionsContainer';
 import TabsContainer from '../tabs-container/TabsContainer';
 import Spinner from '../spinner/Spinner';
 
+import ToggleList from '../toggle/ToggleList';
+
 const chartOptions = [
   { value: 'line', label: 'Line' },
   { value: 'bar', label: 'Bar' },
@@ -48,6 +50,7 @@ const Dashboard = () => {
   const [selectLabel, setSelectLabel] = useState(defaultChart);
   const [maxLabel, setMaxLabel] = useState(0);
   const [techProp, setTechProp] = useState('Technologies');
+  const [techList, setTechList] = useState([]);
 
   useEffect(() => {
     ApiClient.getTechnologies()
@@ -83,6 +86,7 @@ const Dashboard = () => {
             );
           });
         }
+        setTechList([...newDataObj['Technologies'].labels]);
         setNewData({ ...newDataObj });
       })
       .then(() => setIsLoading(false));
@@ -96,6 +100,10 @@ const Dashboard = () => {
     setTechProp(e.target.innerText);
   };
 
+  const handleToggle = (e) => {
+    console.log(e.target.id);
+  };
+
   return (
     <>
       <OptionsContainer
@@ -106,6 +114,7 @@ const Dashboard = () => {
       />
 
       <div className="chart-container">
+        <ToggleList techList={techList} handleToggle={handleToggle} />
         {isLoading ? (
           <Spinner />
         ) : (

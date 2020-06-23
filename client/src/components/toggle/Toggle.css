@@ -1,4 +1,4 @@
- /* .react-toggle {
+ .react-toggle {
    touch-action: pan-x;
 
    display: inline-block;
@@ -47,9 +47,9 @@
    -webkit-transition: all 0.2s ease;
    -moz-transition: all 0.2s ease;
    transition: all 0.2s ease;
- } */
+ } 
 
- /* .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+  .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
    background-color: #fff;
  }
 
@@ -59,9 +59,9 @@
 
  .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
    background-color: #fff;
- } */
+ } 
 
- /* .react-toggle-track-check {
+  .react-toggle-track-check {
    position: absolute;
    width: 14px;
    height: 10px;
@@ -75,16 +75,16 @@
    -webkit-transition: opacity 0.25s ease;
    -moz-transition: opacity 0.25s ease;
    transition: opacity 0.25s ease;
- } */
+ } 
 
- /* .react-toggle--checked .react-toggle-track-check {
+  .react-toggle--checked .react-toggle-track-check {
    opacity: 1;
    -webkit-transition: opacity 0.25s ease;
    -moz-transition: opacity 0.25s ease;
    transition: opacity 0.25s ease;
- }*/
+ }
 
- /* .react-toggle-track-x {
+  .react-toggle-track-x {
    position: absolute;
    width: 10px;
    height: 10px;
@@ -114,7 +114,7 @@
    border: 1px solid #f2948f;
    border-radius: 50%;
    background-color: #f2948f;
-   /* box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5); */
+    box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5); 
 
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
@@ -133,9 +133,9 @@
    left: 27px;
    border-color: #b7f27a;
    background-color: #b7f27a;
- } */
+ } 
 
- /* .react-toggle--focus .react-toggle-thumb {
+  .react-toggle--focus .react-toggle-thumb {
    -webkit-box-shadow: 0px 0px 3px 2px #0099E0;
    -moz-box-shadow: 0px 0px 3px 2px #0099E0;
    box-shadow: 0px 0px 2px 3px #0099E0;
@@ -145,4 +145,4 @@
    -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
    -moz-box-shadow: 0px 0px 5px 5px #0099E0;
    box-shadow: 0px 0px 5px 5px #0099E0;
- } */
+ }

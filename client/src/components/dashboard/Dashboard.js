@@ -4,7 +4,7 @@ import './Dashboard.scss';
 
 // Services
 import ApiClient from '../../services/ApiClient';
-import { colorOptions } from '../../services/metaDeta';
+import { colorOptions } from '../../services/metaData';
 
 // Components
 import OptionsContainer from '../options-container/OptionsContainer';
@@ -45,6 +45,7 @@ const Dashboard = () => {
         setMaxLabel(technologies.Technologies.labels.length);
         // Start of Data Manipulation
         let techKeys = Object.keys(technologies); // Refactor
+        console.log(techKeys);
         // Start of Pie/Doughnut/Polar Chart Data
         let pieDataObj = {};
 

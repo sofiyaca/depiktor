@@ -51,6 +51,7 @@ function getTechnologies() {
       fill: false,
     });
   }
+  // console.log(initialData);
   return Promise.resolve(initialData);
 }
 

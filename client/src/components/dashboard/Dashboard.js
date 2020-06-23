@@ -18,6 +18,7 @@ const chartOptions = [
   { value: 'pie', label: 'Pie' },
   { value: 'doughnut', label: 'Doughnut' },
   { value: 'polar', label: 'Polar' },
+  { value: 'scatter', label: 'Scatter' },
 ];
 
 const chartJSOptions = {
@@ -46,7 +47,8 @@ const defaultChart = {
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [technologies, setTechnologies] = useState({});
-  const [newData, setNewData] = useState({});
+  const [pieData, setPieData] = useState({});
+  const [scatterData, setScatterData] = useState({});
   const [selectLabel, setSelectLabel] = useState(defaultChart);
   const [maxLabel, setMaxLabel] = useState(0);
   const [techProp, setTechProp] = useState('Technologies');
@@ -58,10 +60,11 @@ const Dashboard = () => {
         setTechnologies(technologies);
         setMaxLabel(technologies.Technologies.labels.length);
         // Start of Data Manipulation
-        let techKeys = Object.keys(technologies);
-        let newDataObj = {};
+        let techKeys = Object.keys(technologies); // Refactor
+        let pieDataObj = {};
+
         for (let i = 0; i < techKeys.length; i++) {
-          newDataObj[techKeys[i]] = {
+          pieDataObj[techKeys[i]] = {
             labels: [],
             datasets: [
               {
@@ -78,16 +81,53 @@ const Dashboard = () => {
             ],
           };
           technologies[techKeys[i]].datasets.forEach((item) => {
-            newDataObj[techKeys[i]].labels.push(item.label);
-            newDataObj[techKeys[i]].datasets[0].data.push(
+            pieDataObj[techKeys[i]].labels.push(item.label);
+            pieDataObj[techKeys[i]].datasets[0].data.push(
               item.data.reduce((acc, cur) => {
                 return acc + cur;
               })
             );
           });
         }
-        setTechList([...newDataObj['Technologies'].labels]);
-        setNewData({ ...newDataObj });
+        setTechList([...pieDataObj['Technologies'].labels]);
+        setPieData({ ...pieDataObj });
+
+        let scatterDataObj = {
+          datasets: [],
+        };
+
+        for (let i = 0; i < technologies.Technologies.datasets.length; i++) {
+          // console.log(technologies.Technologies.datasets[i].label);
+          scatterDataObj.datasets.push({
+            label: technologies.Technologies.datasets[i].label,
+            fill: false,
+            backgroundColor: '#FF6384',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: 'rgba(75,192,192,1)',
+            pointBorderWidth: 10,
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [],
+          });
+
+          technologies.Technologies.labels.forEach((item, index) => {
+            // console.log(item.substring(11, 13));
+            scatterDataObj.datasets[i].data.push({
+              x: parseInt(item.substring(11, 13)),
+              y: technologies.Technologies.datasets[i].data[index],
+            });
+          });
+        }
+
+        setScatterData({ ...scatterDataObj });
+
+        console.log('S', scatterDataObj);
+        console.log('P', pieDataObj);
+        console.log('T', technologies);
       })
       .then(() => setIsLoading(false));
   }, []);
@@ -102,6 +142,7 @@ const Dashboard = () => {
 
   const handleToggle = (e) => {
     console.log(e.target.id);
+    console.log(scatterData);
   };
 
   return (
@@ -121,7 +162,8 @@ const Dashboard = () => {
           <TabsContainer
             technologies={technologies}
             chartJSOptions={chartJSOptions}
-            technologyPieData={newData}
+            pieData={pieData}
+            scatterData={scatterData}
             selectLabel={selectLabel}
             handleTabs={handleTabs}
             techProp={techProp}

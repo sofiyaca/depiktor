@@ -41,7 +41,7 @@ const TabsContainer = ({
               Pie: <Pie data={pieData[techProp]}></Pie>,
               Doughnut: <Doughnut data={pieData[techProp]}></Doughnut>,
               Polar: <Polar data={pieData[techProp]}></Polar>,
-              Scatter: <Scatter data={scatterData}></Scatter>,
+              Scatter: <Scatter data={scatterData[techProp]}></Scatter>,
             }[selectLabel.label]
           }
         </TabPanel>

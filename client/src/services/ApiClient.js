@@ -1,5 +1,6 @@
 // import mockData from '../__mocks__/mockData.json';
-import mongoData from '../__mocks__/mongoMocks.json';
+// import mongoData from '../__mocks__/mongoMocks.json';
+import mongoData from '../__mocks__/completeMockList.json';
 import { colorOptions } from './metaDeta';
 
 // const BASE_URL = 'http://localhost:3002';

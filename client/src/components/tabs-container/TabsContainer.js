@@ -11,9 +11,42 @@ import {
 } from 'react-chartjs-2';
 import './TabsContainer.css';
 
+const chartJSOptions = {
+  responsive: true,
+  scales: {
+    xAxes: [
+      {
+        type: 'time',
+        time: {
+          unit: 'hour',
+          unitStepSize: 1,
+          displayFormats: {
+            hour: 'hA',
+          },
+        },
+      },
+    ],
+  },
+};
+
+const scatterOptions = {
+  responsive: true,
+  scales: {
+    x: {
+      type: 'time',
+      time: {
+        unit: 'hour',
+        unitStepSize: 1,
+        displayFormats: {
+          hour: 'hA',
+        },
+      },
+    },
+  },
+};
+
 const TabsContainer = ({
   technologies,
-  chartJSOptions,
   selectLabel,
   pieData,
   scatterData,
@@ -41,7 +74,12 @@ const TabsContainer = ({
               Pie: <Pie data={pieData[techProp]}></Pie>,
               Doughnut: <Doughnut data={pieData[techProp]}></Doughnut>,
               Polar: <Polar data={pieData[techProp]}></Polar>,
-              Scatter: <Scatter data={scatterData[techProp]}></Scatter>,
+              Scatter: (
+                <Scatter
+                  data={scatterData[techProp]}
+                  options={scatterOptions}
+                ></Scatter>
+              ),
             }[selectLabel.label]
           }
         </TabPanel>

@@ -23,24 +23,6 @@ const chartOptions = [
   { value: 'scatter', label: 'Scatter' },
 ];
 
-const chartJSOptions = {
-  responsive: true,
-  scales: {
-    xAxes: [
-      {
-        type: 'time',
-        time: {
-          unit: 'hour',
-          unitStepSize: 1,
-          displayFormats: {
-            hour: 'hA',
-          },
-        },
-      },
-    ],
-  },
-};
-
 const defaultChart = {
   value: 'line',
   label: 'Line',
@@ -177,7 +159,6 @@ const Dashboard = () => {
           <>
             <TabsContainer
               technologies={technologies}
-              chartJSOptions={chartJSOptions}
               pieData={pieData}
               scatterData={scatterData}
               selectLabel={selectLabel}

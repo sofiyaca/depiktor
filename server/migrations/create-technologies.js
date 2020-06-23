@@ -7,11 +7,13 @@ const queryTerms = require('./query-terms');
 
 const seedDB = async (technologies) => {
   for (let i = 0; i < technologies.length; i++) {
-    await TechModel.create({
-      name: technologies[i],
-      counts: [],
-      timestamps: [],
-    });
+    if (!(await TechModel.findOne({ name: technologies[i] }))) {
+      await TechModel.create({
+        name: technologies[i],
+        counts: [],
+        timestamps: [],
+      });
+    }
   }
   console.log(`🌱 Successfully seeded database!`);
 };

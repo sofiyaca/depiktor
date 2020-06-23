@@ -1,6 +1,5 @@
 const queryTerms = [
   'JavaScript',
-  'HTML',
   'CSS',
   'Python',
   'Java',

@@ -67,7 +67,7 @@ async function twitterApiFetch() {
     try {
       let res = await get(requestConfig);
       if (res.statusCode !== 200) {
-        throw new Error(res.json);
+        throw new Error(res.headers);
       }
       return res.body;
     } catch (error) {

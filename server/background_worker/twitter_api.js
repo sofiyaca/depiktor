@@ -31,7 +31,7 @@ async function bearerToken() {
   return JSON.parse(response.body).access_token;
 }
 
-async function twitterApiFetch() {
+async function twitterApiFetch(technologies) {
   let token;
   const maxResults = 100;
   const start_time = moment().subtract(2, 'hours').toISOString();
@@ -76,13 +76,6 @@ async function twitterApiFetch() {
       );
       process.exit(-1);
     }
-  }
-
-  let technologies;
-  try {
-    technologies = await TechModel.find({}, 'name');
-  } catch (error) {
-    console.error(`Error getting the names of technologies: ${error}`);
   }
 
   //loop through each & send name as query param to API

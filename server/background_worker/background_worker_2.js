@@ -14,9 +14,9 @@ rule.minute = 22;
 
 schedule.scheduleJob(rule, () => {
   try {
-    twitterApiFetch(queryTerms.slice(0, queryTerms.length / 2));
-    console.log(`Background worker ran at ${Date.now()}`);
+    twitterApiFetch(queryTerms.slice(queryTerms.length / 2));
+    console.log(`Background worker 2 ran at ${Date.now()}`);
   } catch (error) {
-    console.log(`Error with background worker at ${Date.now()}`, error);
+    console.log(`Error with background worker 2 at ${Date.now()}`, error);
   }
 });

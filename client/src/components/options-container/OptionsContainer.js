@@ -19,7 +19,13 @@ const OptionsContainer = ({
 
       <div
         className="options-container__body"
-        data-tip="Click on chart options to change chart type"
+        data-tip="Click on chart options to change chart type.<br />Click on topics to add or remove topics from the chart."
+        effect="solid"
+        data-place="top"
+        data-type="warning"
+        data-multiline="true"
+        data-border="true"
+        data-text-color="black"
       >
         <ReactTooltip />
         <p>Chart - Options</p>

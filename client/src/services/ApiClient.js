@@ -4,10 +4,10 @@ import mongoData from '../__mocks__/mongoMocks.json';
 // const BASE_URL = 'http://localhost:3002';
 
 const colorOptions = [
-  '#FF6384',
-  '#FFCE56',
-  '#36A2EB',
-  '#EE82EE',
+  '#FF6384', //light red
+  '#FFCE56', //kournikova
+  '#36A2EB', //light blue
+  '#EE82EE', //violet
   '#cd853f', //peru
   '#FA8072', //salmon
   '#00FF00', //line

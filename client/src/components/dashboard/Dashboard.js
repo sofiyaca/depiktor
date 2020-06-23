@@ -62,6 +62,7 @@ const Dashboard = () => {
         setMaxLabel(technologies.Technologies.labels.length);
         // Start of Data Manipulation
         let techKeys = Object.keys(technologies); // Refactor
+        // Start of Pie/Doughnut/Polar Chart Data
         let pieDataObj = {};
 
         for (let i = 0; i < techKeys.length; i++) {
@@ -93,7 +94,9 @@ const Dashboard = () => {
         setTechList([...pieDataObj['Technologies'].labels]);
         setPieData({ ...pieDataObj });
 
+        // Start of Scatter Chart Data
         let scatterDataObj = {
+          type: 'scatter',
           datasets: [],
         };
 
@@ -102,12 +105,12 @@ const Dashboard = () => {
           scatterDataObj.datasets.push({
             label: technologies.Technologies.datasets[i].label,
             fill: false,
-            backgroundColor: '#FF6384',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: 'rgba(75,192,192,1)',
+            backgroundColor: '#36A2EB',
+            pointBorderColor: '#36A2EB',
+            pointBackgroundColor: '#fff',
             pointBorderWidth: 10,
             pointHoverRadius: 10,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBackgroundColor: '#36A2EB',
             pointHoverBorderColor: 'rgba(220,220,220,1)',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
@@ -157,10 +160,10 @@ const Dashboard = () => {
 
       <div
         className="chart-container"
-        data-tip="Click on topics to add or remove them from the charts"
+        // data-tip="Click on topics to add or remove them from the charts"
       >
-        <ReactTooltip />
-        <ToggleList techList={techList} handleToggle={handleToggle} />
+        {/* <ReactTooltip /> */}
+        {/* <ToggleList techList={techList} handleToggle={handleToggle} /> */}
         {isLoading ? (
           <Spinner />
         ) : (

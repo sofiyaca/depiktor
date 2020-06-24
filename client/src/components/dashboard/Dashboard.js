@@ -36,7 +36,7 @@ const Dashboard = () => {
   const [selectLabel, setSelectLabel] = useState(defaultChart);
   const [maxLabel, setMaxLabel] = useState(0);
   const [techProp, setTechProp] = useState('Technologies');
-  // const [techList, setTechList] = useState([]); // get a list of categories or technologies
+  const [techList, setTechList] = useState([]); // get a list of categories or technologies
 
   useEffect(() => {
     ApiClient.getTechnologies()
@@ -78,7 +78,6 @@ const Dashboard = () => {
             );
           });
         }
-        // setTechList([...pieDataObj['Technologies'].labels]);
         setPieData({ ...pieDataObj });
 
         // Start of Scatter Chart Data
@@ -109,7 +108,6 @@ const Dashboard = () => {
           });
 
           technologies['Technologies'].labels.forEach((item, index) => {
-            // console.log(item.substring(11, 13));
             scatterDataObj['Technologies'].datasets[i].data.push({
               x: parseInt(item.substring(11, 13)),
               y: technologies.Technologies.datasets[i].data[index],
@@ -118,7 +116,6 @@ const Dashboard = () => {
         }
 
         setScatterData({ ...scatterDataObj });
-
         console.log('S', scatterDataObj);
         console.log('P', pieDataObj);
         console.log('T', technologies);

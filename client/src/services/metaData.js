@@ -12,7 +12,7 @@ const queryTerms = {
     'Ionic',
   ],
   Frameworks: ['Ember', 'Deno', 'Nodejs', 'React', 'jQuery', 'Angular', 'Vue'],
-  DevOps: [
+  'Dev Ops': [
     'Heroku',
     'Kubernetes',
     'Docker',
@@ -22,9 +22,10 @@ const queryTerms = {
     'Azure',
     'Github',
   ],
-  MachineLearning: ['TensorFlow', 'DeepMind'],
+  'Machine Learning': ['TensorFlow', 'DeepMind'],
   Databases: ['PostgreSQL', 'MongoDB', 'Redis', 'GraphQL'],
   Other: ['StackOverflow', 'Scalar', 'BlockChain'],
+  Custom: [],
 };
 
 const colorOptions = [

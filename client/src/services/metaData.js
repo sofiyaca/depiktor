@@ -22,7 +22,7 @@ const queryTerms = {
     'Azure',
     'Github',
   ],
-  'Machine Learning': ['TensorFlow', 'DeepMind'],
+  'Machine Learning': ['TensorFlow', 'DeepMind', 'Python'],
   Databases: ['PostgreSQL', 'MongoDB', 'Redis', 'GraphQL'],
   Other: ['StackOverflow', 'Scalar', 'BlockChain'],
   Custom: [],

@@ -17,3 +17,5 @@ app.listen(PORT, (err) => {
   if (err) console.log(err);
   console.log(`📣 App listening on http://${HOST}:${PORT}`);
 });
+
+module.exports = app;

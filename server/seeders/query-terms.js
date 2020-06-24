@@ -2,7 +2,6 @@ const queryTerms = [
   'React-Native',
   'Ionic',
   'Ember',
-  'VCS',
   'StackOverflow',
   'GitLab',
   'Github',

@@ -5,6 +5,10 @@ const {
   getTweetCount,
   bearerToken,
 } = require('./twitter_api_helpers');
+const {
+  TWITTER_CONSUMER_KEY,
+  TWITTER_CONSUMER_SECRET,
+} = require('./../config');
 
 async function twitterApiFetch(technologies) {
   let token;
@@ -14,7 +18,7 @@ async function twitterApiFetch(technologies) {
 
   try {
     // Exchange credentials for a Bearer token
-    token = await bearerToken();
+    token = await bearerToken(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
   } catch (e) {
     console.error(
       `Could not generate a Bearer token. Please check that your credentials are correct and that the Filtered Stream preview is enabled in your Labs dashboard. (${e})`

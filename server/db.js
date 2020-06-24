@@ -1,26 +1,17 @@
-const Sequelize = require('sequelize');
-const { DB_SERVER, DB_USER, DB_PASSWORD } = require('./conf');
+'use strict';
 
-const sequelize = new Sequelize(
-  DB_SERVER,
-  DB_USER,
-  DB_PASSWORD, 
-  {
-    host: 'localhost',
-    dialect: 'postgres',
-    logging: false,
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-  },
+const mongoose = require('mongoose');
+const { DB_URI, DB_CONFIG } = require('./config');
+
+mongoose.connect(DB_URI, DB_CONFIG);
+const db = mongoose.connection;
+
+db.once('open', () => {
+  console.log('MongoDB Atlas connection established!');
 });
 
-const db = {};
+db.on('error', () => {
+  console.error('MongoDB Atlas connection error!');
+});
 
-module.exports = {
-  Sequelize,
-  sequelize,
-  db,
-}
+module.exports = db;

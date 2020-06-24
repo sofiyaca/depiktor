@@ -10,13 +10,13 @@ const queryTerms = require('../seeders/query-terms');
 
 //schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();
-rule.minute = 0;
+rule.minute = 30;
 
 schedule.scheduleJob(rule, () => {
   try {
-    twitterApiFetch(queryTerms.slice(0, queryTerms.length / 2));
-    console.log(`Background worker ran at ${Date.now()}`);
+    twitterApiFetch(queryTerms.slice(queryTerms.length / 2));
+    console.log(`Background worker 2 ran at ${Date.now()}`);
   } catch (error) {
-    console.log(`Error with background worker at ${Date.now()}`, error);
+    console.log(`Error with background worker 2 at ${Date.now()}`, error);
   }
 });

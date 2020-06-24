@@ -1,18 +1,15 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) => {
-  const Technology = sequelize.define('Technology', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: true
-    }
-  });
+require('../db');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-  return Technology;
-}
+const techSchema = new Schema({
+  name: String,
+  counts: [Number],
+  timestamps: [Date],
+});
 
+const Technology = mongoose.model('Technology', techSchema);
+
+module.exports = Technology;

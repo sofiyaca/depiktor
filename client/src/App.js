@@ -1,16 +1,14 @@
 import React from 'react';
-import './App.css';
-import Nav from './components/nav/Nav';
+// import Nav from './components/nav/Nav';
 import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
-
-  return(
+  return (
     <div className="App">
-      <Nav></Nav>
+      {/* <Nav></Nav> */}
       <Dashboard></Dashboard>
     </div>
-  )
+  );
 }
 
 export default App;

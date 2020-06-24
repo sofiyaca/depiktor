@@ -2,6 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 // import ReactSlider from 'react-slider';
 import ReactTooltip from 'react-tooltip';
+import Icon from '../../assets/question-icon.png';
 
 const OptionsContainer = ({
   handleSelectedLabel,
@@ -17,18 +18,10 @@ const OptionsContainer = ({
         <div className="nav-text">depiktor</div>
       </div>
 
-      <div
-        className="options-container__body"
-        data-tip="Click on chart options to change chart type.<br />Click on topics to add or remove topics from the chart."
-        effect="solid"
-        data-place="top"
-        data-type="warning"
-        data-multiline="true"
-        data-border="true"
-        data-text-color="black"
-      >
-        <ReactTooltip />
-        <p>Chart - Options</p>
+      <div className="diagonal-line"></div>
+
+      <div className="options-container__body">
+        <p>Chart Options</p>
 
         <Select
           options={chartOptions}
@@ -36,6 +29,21 @@ const OptionsContainer = ({
           value={selectLabel}
           onChange={handleSelectedLabel}
         ></Select>
+      </div>
+      <div className="options-container__icon">
+        <img
+          src={Icon}
+          alt="question-mark-icon"
+          data-tip="Chart options changes the chart type.<br /><br />.Clicking on topics in the chart will add or remove them from the chart. "
+          effect="float"
+          data-type="warning"
+          data-multiline="true"
+          data-border="true"
+          data-text-color="black"
+          data-effect="solid"
+          data-border-color="white"
+        />
+        <ReactTooltip />
       </div>
 
       {/* <div className="chart-timeframe-container">

@@ -30,42 +30,39 @@ const queryTerms = {
 
 const colorOptions = [
   '#FF6384', //light red
-  '#FFCE56', //kournikova
   '#36A2EB', //light blue
+  '#FFCE56', //kournikova
   '#EE82EE', //violet
+  '#000080', //navy
+  '#CD5C5C', //indian red
+  '#483d8b', //dark slate blue
+  '#dc143c', //crimson
+  '#ffa500', //orange
+  '#4682b4', //steel blue
+  '#87ceeb', //sky blue
+  '#4b0082', //indigo
+  '#d2691e', //chocolate
   '#cd853f', //peru
   '#FA8072', //salmon
-  '#00FF00', //line
-  '#008080', //teal
-  '#FF00FF', //fuchsia
-  '#000080', //navy
+  '#b8860b', //dark golden rod
+  '#f08080', //light coral
+  '#20b2aa', //light sea green
   '#808000', //olive
-  '#CD5C5C', //indianred
-  '#00FFFF', //aqua
-  '#ffe4c4', //bisque
-  '#8a2be2', //blue violet
-  '#dc143c', //crimson
-  '#FF6384', //light red
-  '#FFCE56', //kournikova
-  '#36A2EB', //light blue
-  '#EE82EE', //violet
-  '#cd853f', //peru
-  '#FA8072', //salmon
-  '#00FF00', //line
+  '#dda0dd', //plum
+  '#2e8b57', //sea green
+  '#ff6347', //tomato
   '#008080', //teal
-  '#FF00FF', //fuchsia
-  '#000080', //navy
-  '#808000', //olive
-  '#CD5C5C', //indianred
-  '#00FFFF', //aqua
-  '#ffe4c4', //bisque
+  '#a0522d', //sienna
+  '#4169e1', //royal blue
+  '#0000cd', //medium blue
+  '#800000', //maroon
+  '#daa520', //golden rod
   '#8a2be2', //blue violet
-  '#dc143c', //crimson
-  '#FF6384', //light red
-  '#FFCE56', //kournikova
-  '#36A2EB', //light blue
-  '#EE82EE', //violet
-  '#cd853f', //peru
+  '#ffd700', //gold
+  '#8b008b', //dark magenta
+  '#008b8b', //dark cyan
+  '#db7093', //pale violet red
+  '#5f9ea0', //cadet blue
 ];
 
 export { queryTerms, colorOptions };

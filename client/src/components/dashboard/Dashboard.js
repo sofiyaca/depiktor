@@ -36,7 +36,7 @@ const Dashboard = () => {
   const [selectLabel, setSelectLabel] = useState(defaultChart);
   const [maxLabel, setMaxLabel] = useState(0);
   const [techProp, setTechProp] = useState('Technologies');
-  const [techList, setTechList] = useState([]); // get a list of categories or technologies
+  // const [techList, setTechList] = useState([]); // get a list of categories or technologies
 
   useEffect(() => {
     ApiClient.getTechnologies()

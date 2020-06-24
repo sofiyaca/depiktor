@@ -89,6 +89,7 @@ const Dashboard = () => {
           };
         }
 
+        // Need to refactor
         for (let i = 0; i < technologies['Technologies'].datasets.length; i++) {
           // console.log(technologies.Technologies.datasets[i].label);
           scatterDataObj['Technologies'].datasets.push({

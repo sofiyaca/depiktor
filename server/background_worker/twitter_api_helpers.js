@@ -38,15 +38,15 @@ const getTweets = async (requestConfig) => {
   }
 };
 
-const getTweetCount = async (reqConfig) => {
-  let tweets = await getTweets(reqConfig);
+const getTweetCount = async (reqConfig, fetchTweets = getTweets) => {
+  let tweets = await fetchTweets(reqConfig);
   let totalTweetCount = tweets.meta.result_count;
 
   // Getting total number of tweets
   while (tweets.meta.next_token) {
-    tweets = await getTweets(reqConfig);
-    totalTweetCount += tweets.meta.result_count;
     reqConfig.qs.next_token = tweets.meta.next_token;
+    tweets = await fetchTweets(reqConfig);
+    totalTweetCount += tweets.meta.result_count;
   }
 
   return totalTweetCount;
@@ -54,7 +54,7 @@ const getTweetCount = async (reqConfig) => {
 
 const updateTechDoc = async (techName, tweetCount) => {
   try {
-    await TechModel.updateOne(
+    const updated = await TechModel.updateOne(
       { name: techName },
       {
         $push: {
@@ -64,6 +64,7 @@ const updateTechDoc = async (techName, tweetCount) => {
       }
     );
     console.log(`Success inserting into db!`);
+    return updated;
   } catch (error) {
     console.log(`Error inserting ${techName} into db: `, error);
   }

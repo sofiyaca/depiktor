@@ -30,7 +30,7 @@ const mocks = {
   tweets1: {
     meta: {
       result_count: 6,
-      next_token: 'tweets2',
+      // next_token: 'tweets2',
     },
   },
   tweets2: {
@@ -38,6 +38,8 @@ const mocks = {
       result_count: 8,
     },
   },
+  techName: 'JavaScript',
+  tweetCount: 1000,
 };
 
 module.exports = mocks;

@@ -25,7 +25,6 @@ const queryTerms = {
   'Machine Learning': ['TensorFlow', 'DeepMind', 'Python'],
   Databases: ['PostgreSQL', 'MongoDB', 'Redis', 'GraphQL'],
   Other: ['StackOverflow', 'Scalar', 'BlockChain'],
-  Custom: [],
 };
 
 const colorOptions = [

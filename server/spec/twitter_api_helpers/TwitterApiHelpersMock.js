@@ -30,12 +30,6 @@ const mocks = {
   tweets1: {
     meta: {
       result_count: 6,
-      // next_token: 'tweets2',
-    },
-  },
-  tweets2: {
-    meta: {
-      result_count: 8,
     },
   },
   techName: 'JavaScript',

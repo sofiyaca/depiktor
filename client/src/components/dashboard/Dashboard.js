@@ -38,11 +38,13 @@ const Dashboard = () => {
     ApiClient.getTechnologies()
       .then((data) => {
         const technologies = organizeApiData(data);
+        console.log(technologies);
         setTechnologies(technologies);
         setMaxLabel(technologies.Technologies.labels.length);
         let techKeys = Object.keys(technologies); // Refactor
 
         const pieDataObj = organizePieData(technologies, techKeys);
+        console.log(pieDataObj);
         setPieData({ ...pieDataObj });
       })
       .then(() => setIsLoading(false));

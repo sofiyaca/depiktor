@@ -1,0 +1,6 @@
+
+/depiktor_demo
+/node_modules
+npm-debug.log
+.DS_Store
+*.env

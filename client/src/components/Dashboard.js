@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ApiClient from '../ApiClient';
+import ApiClient from '../services/ApiClient';
 import './Dashboard.css';
 import Spinner from './Spinner';
 

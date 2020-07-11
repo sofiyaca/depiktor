@@ -1,0 +1,30 @@
+{
+  "name": "depiktor",
+  "version": "1.0.0",
+  "description": "Depiktor queries the Twitter API for mentions of popular technologies and visually displays them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": "13.8.x",
+    "npm": "6.14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sofiyaca/depiktor.git"
+  },
+  "keywords": [
+    "twitter",
+    "data",
+    "visualization",
+    "trends"
+  ],
+  "author": "Sofiya Lazarova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sofiyaca/depiktor/issues"
+  },
+  "homepage": "https://github.com/sofiyaca/depiktor#readme"
+}

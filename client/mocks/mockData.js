@@ -1,7 +1,7 @@
 // mock data from getData 
 const mockData = [ 
   
-  {"Web Frameworks": { //this object is = data 
+  {"Web Frameworks": { // this object is = data  
   labels: ['6 days ago', '6', '5', '4', '3', '2', 'today'],
   datasets: [
     {
@@ -30,7 +30,7 @@ const mockData = [
     {
       label: "JavaScript",
       data: [12, 4, 7, 32, 6, 15, 7],
-      borderColor: ['red', 'yellow', 'orange', 'blue'], //how to add colors
+      borderColor: ['red', 'yellow', 'orange', 'blue'], // how to add colors   
       backgroundColor: ['red', 'yellow', 'orange', 'blue'],
       fill: false,
     },
@@ -82,3 +82,5 @@ const mockData = [
   },
 },
 ]
+
+export default mockData;

@@ -57,8 +57,8 @@ async function getAll (_, res) {
       };
       return acc;
     }, {});
-    
-    res.json(serializedTech, 200);
+
+    res.status(200).json(serializedTech);
   } catch (error) {
     console.log(error);
   }

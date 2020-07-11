@@ -42,7 +42,7 @@ async function getAll (_, res) {
     const technologies = await db.technology.findAll({
       include: [{
         model: db.count,
-        where: {'createdAt': {[Op.gte]: oneWeek}},
+        // where: {'createdAt': {[Op.gte]: oneWeek}},
         order: 'createdAt',
       }],
     });
@@ -58,8 +58,7 @@ async function getAll (_, res) {
       return acc;
     }, {});
     
-    res.json(serializedTech);
-    res.status(200).send();
+    res.json(serializedTech, 200);
   } catch (error) {
     console.log(error);
   }

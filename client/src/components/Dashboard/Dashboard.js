@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import ApiClient from '../services/ApiClient';
+import ApiClient from '../../services/ApiClient';
+import Spinner from '../Spinner/Spinner';
 import './Dashboard.css';
-import Spinner from './Spinner';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './React-Tabs.css';
+import '../React-Tabs/React-Tabs.css';
 import {Line, Bar, Radar} from 'react-chartjs-2';
 import Select from 'react-select';
 import ReactSlider from 'react-slider';

@@ -1,14 +1,13 @@
 const express = require('express');
-
-// eslint-disable-next-line new-cap
-const app = new express();
 const morgan = require('morgan');
 const cors = require('cors');
-
-const db = require('./models');
 const router = require('./router/router');
+const db = require('./models');
+const { PORT, HOST } = require(process.env.NODE_ENV === 'production'
+  ? './config.prod'
+  : './config.dev');
 
-const PORT = 3002;
+const app = new express();
 
 app.use(morgan('tiny'));
 app.use(cors());
@@ -19,8 +18,10 @@ app.use(router);
 (async () => {
   try {
     await db.sequelize.sync();
-    app.listen(PORT, () => console.log(`📣 App listening on port ${PORT}`)); // eslint-disable-line no-console
+    app.listen(PORT, () =>
+      console.log(`📣 App listening on http://${HOST}${PORT}`)
+    );
   } catch (e) {
-    console.error('😟 Error connecting to the db', e); // eslint-disable-line no-console
+    console.error('😟 Error connecting to the db', e);
   }
 })();

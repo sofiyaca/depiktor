@@ -1,14 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const { DATABASE_NAME, DATABASE_USER, HOST } = require('../config.dev');
 
 const basename = path.basename(__filename);
-
 const db = {};
 
-// TODO: add a config file env variables
-const sequelize = new Sequelize('depiktor_server_db_v3', 'lazarova', '', {
-  host: 'localhost',
+const sequelize = new Sequelize(DATABASE_NAME, DATABASE_USER, '', {
+  host: HOST,
   dialect: 'postgres',
   logging: false,
   pool: {

@@ -42,7 +42,7 @@ async function getAll(_, res) {
       include: [
         {
           model: db.count,
-          // where: {'createdAt': {[Op.gte]: oneWeek}},
+          where: { createdAt: { [Op.gte]: oneWeek } },
           order: 'createdAt',
         },
       ],

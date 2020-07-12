@@ -1,2 +1,2 @@
 web: npm start
-worker:  node background_worker.js
+worker:  node server/background_worker/background_worker.js

@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const router = require('./router/router');
 const db = require('./models');
+const path = require('path');
 const { PORT, HOST } = require(process.env.NODE_ENV === 'production'
   ? './config.prod'
   : './config.dev');
@@ -13,6 +14,15 @@ app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
 app.use(router);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, '..', 'client', 'build', 'index.html')
+    );
+  });
+}
 
 // connect to the db
 (async () => {

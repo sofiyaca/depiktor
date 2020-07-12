@@ -1,22 +1,41 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const { DATABASE_NAME, DATABASE_USER, HOST } = require('../config.dev');
+const {
+  PORT,
+  HOST,
+  DATABASE_NAME,
+  DATABASE_USER,
+  DATABASE_URL,
+} = require(process.env.NODE_ENV === 'production'
+  ? '../config.prod'
+  : '../config.dev');
 
 const basename = path.basename(__filename);
 const db = {};
+let sequelize;
 
-const sequelize = new Sequelize(DATABASE_NAME, DATABASE_USER, '', {
-  host: HOST,
-  dialect: 'postgres',
-  logging: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
-});
+if (DATABASE_URL) {
+  sequelize = new Sequelize(DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    port: PORT,
+    host: HOST,
+    logging: false,
+  });
+} else {
+  sequelize = new Sequelize(DATABASE_NAME, DATABASE_USER, '', {
+    host: HOST,
+    dialect: 'postgres',
+    logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+  });
+}
 
 fs.readdirSync(__dirname)
   .filter((file) => {

@@ -21,8 +21,10 @@ export default function Dashboard() {
   useEffect(() => {
     ApiClient.getTechnologies()
       .then((technologies) => {
-        setTechnologies(technologies);
-        setMaxLabel(technologies.Platforms.labels.length);
+          setTechnologies(technologies);
+          if (technologies.Platforms) {
+          setMaxLabel(technologies.Platforms.labels.length);
+        } 
       })
       .then(() => setLoadStatus(false));
   }, []);

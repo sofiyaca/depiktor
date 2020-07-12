@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // schedule recurring get request once every hour
 const rule = new schedule.RecurrenceRule();
-rule.minute = 21;
+rule.minute = 0;
 
 schedule.scheduleJob(rule, () => {
   try {

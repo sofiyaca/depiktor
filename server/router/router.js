@@ -3,6 +3,6 @@ const controller = require('../controllers/controller');
 
 const router = express.Router();
 
-router.get('/', controller.getAll);
+router.get('/tweetdata', controller.getAll);
 
 module.exports = router;

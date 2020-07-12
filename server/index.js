@@ -4,7 +4,7 @@ const cors = require('cors');
 const router = require('./router/router');
 const db = require('./models');
 const path = require('path');
-const { PORT, HOST } = require(process.env.NODE_ENV === 'production'
+const { WEB_PORT, WEB_HOST } = require(process.env.NODE_ENV === 'production'
   ? './config.prod'
   : './config.dev');
 
@@ -28,8 +28,8 @@ if (process.env.NODE_ENV === 'production') {
 (async () => {
   try {
     await db.sequelize.sync();
-    app.listen(PORT, () =>
-      console.log(`📣 App listening on http://${HOST}${PORT}`)
+    app.listen(WEB_PORT, () =>
+      console.log(`📣 App listening on http://${WEB_HOST}:${WEB_PORT}`)
     );
   } catch (e) {
     console.error('😟 Error connecting to the db', e);

@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const {
-  PORT,
-  HOST,
+  DB_PORT,
+  DB_HOST,
   DATABASE_NAME,
   DATABASE_USER,
   DATABASE_URL,
@@ -19,13 +19,13 @@ if (DATABASE_URL) {
   sequelize = new Sequelize(DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
-    port: PORT,
-    host: HOST,
+    port: DB_PORT,
+    host: DB_HOST,
     logging: false,
   });
 } else {
   sequelize = new Sequelize(DATABASE_NAME, DATABASE_USER, '', {
-    host: HOST,
+    host: DB_HOST,
     dialect: 'postgres',
     logging: false,
     pool: {

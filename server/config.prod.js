@@ -9,8 +9,10 @@ const match = process.env.DATABASE_URL.match(
 module.exports = {
   TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
-  HOST: match[3],
-  PORT: match[4],
+  DB_HOST: match[3],
+  DB_PORT: match[4],
   DATABASE_NAME: 'depiktor_prod',
   DATABASE_URL: process.env.DATABASE_URL,
+  WEB_PORT: process.env.PORT,
+  WEB_HOST: 'https://depiktor.herokuapp.com',
 };

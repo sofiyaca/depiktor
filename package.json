@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/sofiyaca/depiktor/issues"
   },
-  "homepage": "https://github.com/sofiyaca/depiktor#readme"
+  "homepage": "https://github.com/sofiyaca/depiktor#readme",
+  "dependencies": {}
 }

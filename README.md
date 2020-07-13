@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # depiktor
 
 depiktor is a full-stack SPA, which keeps you on top of technology trends via the Twitter API. Using the technologies listed in the 2020 StackOverflow Developer Survey, Depiktor queries Twitter for the number of mentions of those technologies every hour and saves the count to display it interactively.

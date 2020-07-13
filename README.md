@@ -4,6 +4,21 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 
  You can find the live version [here](https://depiktor.herokuapp.com).
 
+## Tech Stack
+
+### Front End
+
+  ChartJS
+  React
+  CSS
+
+### Back End
+
+  Express
+  Sequelize
+  PostgreSQL
+  NodeJS
+
 ## Requirements
 
  - Twitter Developer Account
@@ -22,8 +37,10 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 
  - Create a `.env` file in the server folder like this:
 
-  `TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY`
-  `TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET`
+  `TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY`  
+
+  `TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET`  
+
   `PG_DATABASE_USER=YOUR_PG_DATABASE_USER`
 
 ## Usage
@@ -43,7 +60,9 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 ## Roadmap
 
  - Have two background workers populating one half of the DB to avoid going over the Twitter API limit. 
- - Refactor `controller.js` into a `controller` and a `view` to add separation of concerns.
+ - Refactor `controller.js` into a `controller.js` and a `view.js` to separate concerns.
+ - User can create a new tab and input their own search terms.
+ - User view their custom search terms when logged into their profile.
  - Add a test suite.
  - Mobile friendly.
  - Make available offline via PWA.

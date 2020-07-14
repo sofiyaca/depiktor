@@ -1,5 +1,5 @@
 // uncomment the next line to use with mock data
-// import mockTweetData from "../../mocks/mockApiRes.json";
+// import mockTweetData from "../mocks/mockApiRes.json";
 
 const BASE_URL =
   process.env.NODE_ENV === "production"

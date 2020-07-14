@@ -4,7 +4,7 @@ import Spinner from "../Spinner/Spinner";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Line, Bar, Radar } from "react-chartjs-2";
 import Select from "react-select";
-import ReactSlider from "react-slider";
+// import ReactSlider from "react-slider";
 import "./Dashboard.css";
 import "../React-Tabs/React-Tabs.css";
 
@@ -15,16 +15,16 @@ export default function Dashboard() {
     value: "line",
     label: "Line",
   });
-  const [selectTime, setSelectTime] = useState(0);
-  const [maxLabel, setMaxLabel] = useState(0);
+  // const [selectTime, setSelectTime] = useState(0);
+  // const [maxLabel, setMaxLabel] = useState(0);
 
   useEffect(() => {
     ApiClient.getTechnologies()
       .then((technologies) => {
           setTechnologies(technologies);
-          if (technologies.Platforms) {
-          setMaxLabel(technologies.Platforms.labels.length);
-        } 
+        //   if (technologies.Platforms) {
+        //   setMaxLabel(technologies.Platforms.labels.length);
+        // } 
       })
       .then(() => setLoadStatus(false));
   }, []);
@@ -33,9 +33,9 @@ export default function Dashboard() {
     setSelectLabel(e);
   }
 
-  function handleSelectedTime(e) {
-    setSelectTime(e);
-  }
+  // function handleSelectedTime(e) {
+  //   setSelectTime(e);
+  // }
 
   const chartOptions = [
     { value: "line", label: "Line" },
@@ -80,7 +80,7 @@ export default function Dashboard() {
             ></Select>
           </div>
 
-          <div className="chart-timeframe-container">
+          {/* <div className="chart-timeframe-container">
             <p>Timeframe</p>
             <ReactSlider
               className="horizontal-slider"
@@ -95,7 +95,7 @@ export default function Dashboard() {
                 <div {...props}>{state.valueNow}</div> // eslint-disable jsx-props-no-spreading
               )}
             ></ReactSlider>
-          </div>
+          </div> */}
         </div>
       </div>
 

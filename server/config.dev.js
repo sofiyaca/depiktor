@@ -7,6 +7,6 @@ module.exports = {
   WEB_PORT: 3002,
   DATABASE_NAME: 'depiktor_dev',
   DATABASE_USER: process.env.PG_DATABASE_USER,
-  DB_HOST: 'TODO',
-  DB_PORT: 'TODO',
+  DB_HOST: 'localhost',
+  DB_PORT: 3002,
 };

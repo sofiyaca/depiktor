@@ -4,6 +4,10 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 
  You can find the live version [here](https://depiktor.herokuapp.com).
 
+ ### Preview
+
+![preview of depiktor](client/src/assets/depiktor.png "Depiktor") 
+
 ## Tech Stack
 
 ### Front End
@@ -21,8 +25,8 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 
 ## Requirements
 
- - Twitter Developer Account
- - Registered Twitter app
+ - Twitter Developer Account [not required with mock data]
+ - Registered Twitter app [not required with mock data]
  - Node, npm, and PostgreSQL
 
 ## Installation

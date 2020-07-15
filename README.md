@@ -8,6 +8,10 @@ depiktor is a full-stack SPA, which keeps you on top of technology trends via th
 
 ![preview of depiktor](client/src/assets/depiktor.png "Depiktor") 
 
+### Design Doc 
+
+Available [here](https://www.notion.so/Depiktor-334f830e254f456095e44fbce9b616df).
+
 ## Tech Stack
 
 ### Front End
